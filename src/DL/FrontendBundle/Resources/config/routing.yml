@@ -1,0 +1,8 @@
+dl_frontend_homepage:
+    path:     /
+    defaults: { _controller: DLFrontendBundle:Default:index }
+
+accueil:
+    path:     /home
+    defaults: { _controller: DLFrontendBundle:Affichage:accueil }
+
