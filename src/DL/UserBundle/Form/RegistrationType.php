@@ -41,14 +41,12 @@ class RegistrationType extends AbstractType
             ->add('datedenaissance',BirthdayType::class)
             ->add('pays')
             ->add('adresse')
-            ->add('roles', ChoiceType::class, array(
-                'label' => 'Civilité ', 'choices' => array(
-                    'Homme' => 'gender.male',
-                    'Femme' => 'gender.female'), 'required' => true, 'multiple' => true,))
+            ->add('civilite',ChoiceType::class, array('choices'=>array('M'=>'gender.male','Mme'=>'gender.female'),
+                'label' => 'Civilité'),array('required' => true))
             ->add('tel')
-
-
-
+            ->add('roles', ChoiceType::class, array(
+                'label' => 'Inscription en tant que: ', 'choices' => array(
+                    'GUEST' => 'ROLE_USER', 'NETWORKER' => 'ROLE_NETWORKER'), 'required' => true, 'multiple' => true,))
         ;
     }
 

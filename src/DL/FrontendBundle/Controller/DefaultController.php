@@ -10,4 +10,13 @@ class DefaultController extends Controller
     {
         return $this->render('DLFrontendBundle:Default:index.html.twig');
     }
+
+    public function testAction()
+    {
+        // replace this example code with whatever you need
+
+        $random = random_int(100, 10000);
+        dump($random);
+        return $this->render('DLFrontendBundle:Default:test.html.twig');
+    }
 }

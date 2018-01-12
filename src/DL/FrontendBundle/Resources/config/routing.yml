@@ -6,3 +6,6 @@ accueil:
     path:     /home
     defaults: { _controller: DLFrontendBundle:Affichage:accueil }
 
+test:
+    path:     /test
+    defaults: { _controller: DLFrontendBundle:Default:test }

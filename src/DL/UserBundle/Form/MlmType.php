@@ -14,11 +14,8 @@ class MlmType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
         $builder
             ->add('codeparent');
-
-
     }
 
     public function configureOptions(OptionsResolver $resolver)

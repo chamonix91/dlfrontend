@@ -29,7 +29,7 @@ class Mlm
     /**
      * @ORM\Column(type="integer")
      */
-    private $idpartenaire=0;
+    private $idpartenaire ;
 
     /**
      * @ORM\Column(type="string")
@@ -88,6 +88,7 @@ class Mlm
      */
     private $nbrepartenairedroite=0;
 
+
     /**
      * Mlm constructor.
      */
@@ -127,6 +128,7 @@ class Mlm
      */
     public function setIdpartenaire($idpartenaire)
     {
+
         $this->idpartenaire = $idpartenaire;
     }
 
@@ -308,7 +310,10 @@ class Mlm
         $this->nbrepartenairedroite = $nbrepartenairedroite;
     }
 
-
+    private function getUser()
+    {
+        return $this->getUser();
+    }
 
 
 }

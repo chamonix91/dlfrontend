@@ -75,9 +75,12 @@ class User extends BaseUser
     private $codepostal = 0;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string")
+     *
      */
-    private $code = "";
+    private $code="";
 
     /**
      * @ORM\Column(type="integer")
@@ -101,14 +104,7 @@ class User extends BaseUser
      */
     private $image = "";
 
-    /**
-     *
-     * User constructor.
-     *
-     */
-    public function __construct()
-    {
-    }
+
 
     /**
      * @return mixed
@@ -233,21 +229,7 @@ class User extends BaseUser
         $this->codepostal = $codepostal;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
 
-    /**
-     * @param mixed $code
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-    }
 
     /**
      * @return mixed
