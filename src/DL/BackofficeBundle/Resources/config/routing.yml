@@ -2,6 +2,6 @@ dl_backoffice_homepage:
     path:     /
     defaults: { _controller: DLBackofficeBundle:Default:index }
 
-home:
+dashboard:
     path:     /dashboard
     defaults: { _controller: DLBackofficeBundle:Main:index }

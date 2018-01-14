@@ -2,5 +2,9 @@ dl_user_homepage:
     path:     /
     defaults: { _controller: DLUserBundle:Default:index }
 
+addUser:
+    path:     /adduser
+    defaults: { _controller: DLUserBundle:User:addUser }
+
 
 

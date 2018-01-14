@@ -118,7 +118,7 @@
 }
 .cal1 .clndr .clndr-table tr .day.today,
 .cal1 .clndr .clndr-table tr .day.my-today {
-     background: #B52E31;
+     background: #e07e27;
     color: #fff;
 }
 .cal1 .clndr .clndr-table tr .day.today:hover,
@@ -126,12 +126,12 @@
  background: #252525;
 }
 .cal1 .clndr .clndr-table tr .day.today.event, .cal1 .clndr .clndr-table tr .day.my-today.event {
-    background: #B52E31;
+    background: #e07e27;
     color: #fff;
 }
 .cal1 .clndr .clndr-table tr .day.event,
 .cal1 .clndr .clndr-table tr .day.my-event {
-	color: #B52E31;
+	color: #e07e27;
     font-weight: 400;
 }
 .cal1 .clndr .clndr-table tr .day.event:hover,

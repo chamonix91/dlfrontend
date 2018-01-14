@@ -1,0 +1,82 @@
+{% extends '@DLBackoffice/BackLayout/Layout.html.twig' %}
+
+{% block content %}
+<div class="women_main">
+    <div class="row single">
+        <div class="det">
+            <div class="single_left">
+                <div class="grid images_3_of_2">
+                    <div class="flexslider">
+                        <!-- FlexSlider -->
+                        <script src="{{ asset('Backoffice/js/imagezoom.js') }}"></script>
+                        <script defer="" src="{{ asset('Backoffice/js/jquery.flexslider.js') }}"></script>
+                        <link rel="stylesheet" href="{{ asset('Backoffice/css/flexslider.css') }}" type="text/css" media="screen">
+
+                        <script>
+                            // Can also be used with $(document).ready()
+                            $(window).load(function() {
+                                $('.flexslider').flexslider({
+                                    animation: "slide",
+                                    controlNav: "thumbnails"
+                                });
+                            });
+                        </script>
+                        <!-- //FlexSlider-->
+
+
+
+                        <div class="flex-viewport" style="overflow: hidden; position: relative;"><ul class="slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-864px, 0px, 0px);"><li data-thumb="{{ asset('Backoffice/images/d4.jpg') }}" class="clone" aria-hidden="true" style="width: 288px; float: left; display: block;">
+                                    <div class="thumb-image"> <img src="{{ asset('Backoffice/images/d4.jpg') }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                </li>
+                                <li data-thumb="{{ asset('Backoffice/images/d1.jpg') }}" class="" style="width: 288px; float: left; display: block;">
+                                    <div class="thumb-image"> <img src="{{ asset('Backoffice/images/d1.jpg') }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                </li>
+                                <li data-thumb="{{ asset('Backoffice/images/d2.jpg') }}" style="width: 288px; float: left; display: block;" class="">
+                                    <div class="thumb-image"> <img src="{{ asset('Backoffice/images/d2.jpg') }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                </li>
+                                <li data-thumb="{{ asset('Backoffice/images/d3.jpg') }}" style="width: 288px; float: left; display: block;" class="flex-active-slide">
+                                    <div class="thumb-image"> <img src="{{ asset('Backoffice/images/d3.jpg') }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                </li>
+
+                            </ul></div><ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li><li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li></ul></div>
+                </div>
+                <div class="desc1 span_3_of_2">
+                    <h3>{{ produit.libelle }}</h3>
+                    <span class="brand">Brand: <a href="#">Sed do eiusmod </a></span>
+                    <br>
+                    <span class="code">Product Code: Product 11</span>
+                    <p>when an unknown printer took a galley of type and scrambled it to make</p>
+                    <div class="price">
+                        <span class="text">Price:</span>
+                        <span class="price-new">{{ produit.prix }} Dt</span><span class="price-old">$100.00</span>
+                        <span class="price-tax">Ex Tax: $90.00</span><br>
+                        <span class="points"><small>Price in reward points: 400</small></span><br>
+                    </div>
+                    <div class="det_nav1">
+                        <h4>Select a size :</h4>
+                        <div class=" sky-form col col-4">
+                            <ul>
+                                <li><label class="checkbox"><input type="checkbox" name="checkbox"><i></i>L</label></li>
+                                <li><label class="checkbox"><input type="checkbox" name="checkbox"><i></i>S</label></li>
+                                <li><label class="checkbox"><input type="checkbox" name="checkbox"><i></i>M</label></li>
+                                <li><label class="checkbox"><input type="checkbox" name="checkbox"><i></i>XL</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="btn_form">
+                        <a href="{{ path('ajouterPanier', { 'id' : produit.id }) }}">Acheter</a>
+                    </div>
+                    {#<a href="#"><span>login to save in wishlist </span></a>#}
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="single-bottom1">
+                <h6>Details</h6>
+                <p class="prod-desc">{{ produit.description }}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

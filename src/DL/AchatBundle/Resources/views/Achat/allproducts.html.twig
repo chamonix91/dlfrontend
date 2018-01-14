@@ -1,0 +1,58 @@
+{% extends '@DLBackoffice/BackLayout/Layout.html.twig' %}
+
+{% block content %}
+    <div class="women_main">
+
+        <div class="w_content">
+            <div class="women">
+                <a href="#"><h4>Enthecwear - <span>4449 items</span></h4></a>
+                <ul class="w_nav">
+                    <li>Sort :</li>
+                    <li><a class="active" href="#">popular</a></li>
+                    |
+                    <li><a href="#">new </a></li>
+                    |
+                    <li><a href="#">discount</a></li>
+                    |
+                    <li><a href="#">price: Low High </a></li>
+                    <div class="clear"></div>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <!-- grids_of_4 -->
+            {% set j = 4 %}
+            {% for i in products %}
+            {% if j == 4 %}
+            <div class="grids_of_4">
+                {% endif %}
+
+                {% set j = j - 1 %}
+
+                <div class="grid1_of_4">
+                    <div class="content_box"><a href="{{ path('detailProduct', { 'id': i.id }) }}">
+                            <img src="{{ asset('Backoffice/images/w5.jpg') }}" class="img-responsive" alt="">
+                        </a>
+                        <h4><a href="{{ path('detailProduct', { 'id': i.id }) }}">{{ i.libelle }}</a></h4>
+                        <p>It is a long established fact that</p>
+                        <div class="grid_1 simpleCart_shelfItem">
+
+                            <div class="item_add"><span class="item_price"><h6>{{ i.prix }}</h6></span></div>
+                            <div class="item_add"><span class="item_price"><a href="#">add to cart</a></span></div>
+                        </div>
+                    </div>
+                </div>
+                {% if j == 0 %}
+                <div class="clearfix"></div>
+            </div>
+
+        {% set j = 4 %}
+        {% endif %}
+
+        {% endfor %}
+            <div class="clearfix"></div>
+        <!-- end grids_of_4 -->
+    </div>
+
+    </div>
+
+{% endblock content %}

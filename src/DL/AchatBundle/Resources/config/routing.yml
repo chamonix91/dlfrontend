@@ -1,0 +1,23 @@
+dl_achat_homepage:
+    path:     /
+    defaults: { _controller: DLAchatBundle:Default:index }
+
+allProducts:
+    path:     /allProducts
+    defaults: { _controller: DLAchatBundle:Produit:listProducts }
+
+detailProduct:
+    path:     /{id}/detailProduct
+    defaults: { _controller: DLAchatBundle:Produit:detailProduct }
+
+ajouterPanier:
+    path:     /ajouterPanier
+    defaults: { _controller: DLAchatBundle:Panier:ajouter }
+
+supprimerPanier:
+    path:     /supprimerPanier
+    defaults: { _controller: DLAchatBundle:Panier:supprimer }
+
+panier:
+    path:  /panier
+    defaults: { _controller: DLAchatBundle:Panier:panier }
