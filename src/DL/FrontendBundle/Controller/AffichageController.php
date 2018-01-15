@@ -15,4 +15,11 @@ class AffichageController extends Controller
     {
         return $this->render('@DLFrontend/Front/inedx.html.twig');
     }
+
+    public function actualiteAction()
+    {
+        return $this->render('@DLFrontend/Front/actualite.html.twig');
+    }
+
+
 }

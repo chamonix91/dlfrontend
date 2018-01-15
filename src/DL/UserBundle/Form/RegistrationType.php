@@ -4,10 +4,12 @@
 namespace DL\UserBundle\Form;
 
 
+use DL\UserBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,8 +18,15 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $user = new User();
+
+        $ribdocument = $user->getRibDocument();
+
         $builder
-            ->add('Mlm',\DL\UserBundle\Form\MlmType::class)
+
+            ->add('Mlm',\DL\UserBundle\Form\MlmType::class, array(
+                'label_format' => 'Informations sur votre enrolleur:',
+            ))
             ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', RepeatedType::class, array(
                 'first_options'  => array('label' => 'Email'),
@@ -44,6 +53,8 @@ class RegistrationType extends AbstractType
             ->add('civilite',ChoiceType::class, array('choices'=>array('M'=>'gender.male','Mme'=>'gender.female'),
                 'label' => 'Civilité'),array('required' => true))
             ->add('tel')
+
+
             ->add('roles', ChoiceType::class, array(
                 'label' => 'Inscription en tant que: ', 'choices' => array(
                     'GUEST' => 'ROLE_USER', 'NETWORKER' => 'ROLE_NETWORKER'), 'required' => true, 'multiple' => true,))

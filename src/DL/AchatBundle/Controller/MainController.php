@@ -20,4 +20,9 @@ class MainController extends Controller
     {
         return $this->render('@DLAchat/Achat/detailProduct.html.twig');
     }
+
+    public function factureAction()
+    {
+        return $this->render('@DLAchat/Commande/Facture.html.twig');
+    }
 }

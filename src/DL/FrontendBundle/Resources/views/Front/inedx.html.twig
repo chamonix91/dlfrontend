@@ -60,13 +60,13 @@
                         <input type="search" placeholder="Rechercher..." class="search-input w-100">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#">Connexion IR</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Connexion IR</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#">Inscription</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_registration_register') }}">Inscription</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#">Acheter</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('dashboard') }}">Mon compte</a>
                     </li>
                 </ul>
             </div>
@@ -87,7 +87,7 @@
                         <a class="nav-link js-scroll-trigger" href="#opportunites">Opportunités</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="actualites.html">Actualités</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('actualite') }}">Actualités</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#contact">Centre d'assistance</a>

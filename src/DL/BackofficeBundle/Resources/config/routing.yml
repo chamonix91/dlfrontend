@@ -1,7 +1,18 @@
-dl_backoffice_homepage:
-    path:     /
-    defaults: { _controller: DLBackofficeBundle:Default:index }
+
 
 dashboard:
     path:     /dashboard
     defaults: { _controller: DLBackofficeBundle:Main:index }
+
+tree:
+    path:     /tree
+    defaults: { _controller: DLBackofficeBundle:Main:showtree }
+
+
+event:
+    path:     /blog
+    defaults: { _controller: DLBackofficeBundle:Main:event }
+
+challenge:
+    path:     /challenges
+    defaults: { _controller: DLBackofficeBundle:Main:challenge }

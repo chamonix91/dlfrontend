@@ -88,6 +88,16 @@ class User extends BaseUser
     private $tel;
 
     /**
+     * @ORM\Column(type="blob")
+     */
+    private $ribDocument = "";
+
+    /**
+     * @ORM\Column(type="blob")
+     */
+    private $cinDocument = "";
+
+    /**
      * @ORM\Column(type="string")
      */
     private $civilite="";
@@ -103,6 +113,7 @@ class User extends BaseUser
      * @ORM\Column(type="string")
      */
     private $image = "";
+
 
 
 
@@ -341,6 +352,59 @@ class User extends BaseUser
     public function setRib($rib)
     {
         $this->rib = $rib;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCinDocument()
+    {
+        return $this->cinDocument;
+    }
+
+    /**
+     * @param mixed $cinDocument
+     */
+    public function setCinDocument($cinDocument)
+    {
+        $this->cinDocument = $cinDocument;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRibDocument()
+    {
+        return $this->ribDocument;
+    }
+
+    /**
+     * @param mixed $ribDocument
+     */
+    public function setRibDocument($ribDocument)
+    {
+        $this->ribDocument = $ribDocument;
+    }
+
+    public function __toString()
+    {
+        return $this->nom;
     }
 
 

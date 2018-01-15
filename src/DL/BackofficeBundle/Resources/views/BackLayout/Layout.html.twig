@@ -837,11 +837,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="footer">
                         <div class="col-md-3 cust">
-                            <h4>CUSTOMER CARE</h4>
-                            <li><a href="contact.html">Help Center</a></li>
+                            <h4>service à la clientèle</h4>
+                            <li><a href="contact.html">Center d'aide</a></li>
                             <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="details.html">How To Buy</a></li>
-                            <li><a href="checkout.html">Delivery</a></li>
+                            <li><a href="details.html">Comment acheter</a></li>
+                            <li><a href="checkout.html">Livraison</a></li>
                         </div>
                         <div class="col-md-2 abt">
                             <h4>ABOUT US</h4>
@@ -852,10 +852,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="col-md-2 myac">
                             <h4>MY ACCOUNT</h4>
-                            <li><a href="register.html">Register</a></li>
-                            <li><a href="checkout.html">My Cart</a></li>
-                            <li><a href="checkout.html">Order History</a></li>
-                            <li><a href="details.html">Payment</a></li>
+                            <li><a href="register.html">Mon arbre</a></li>
+                            <li><a href="checkout.html">Mes commandes</a></li>
+                            <li><a href="details.html">Mes informations</a></li>
                         </div>
                         <div class="col-md-5 our-st">
                             <div class="our-left">
@@ -888,17 +887,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="menu">
             <ul id="menu">
                 <li><a href="{{ path('dashboard') }}"><i class="fa fa-tachometer"></i> <span>Tableau de board</span></a></li>
-                <li id="menu-academico"><a href="{{ path('allProducts') }}"><i class="fa fa-shopping-cart "></i> <span> Tous les produits</span> <span
-                                class="fa fa-angle-right" style="float: right"></span></a>
-                    <ul id="menu-academico-sub">
-                        <li id="menu-academico-avaliacoes"><a href="shoes.html">Shoes</a></li>
-                        <li id="menu-academico-avaliacoes"><a href="products.html">Watches</a></li>
-                        <li id="menu-academico-boletim"><a href="sunglasses.html">Sunglasses</a></li>
-                    </ul>
+                <li id="menu-academico"><a href="{{ path('allProducts') }}"><i class="fa fa-shopping-cart "></i> <span> Tous les produits</span>
+                       </a>
+
                 </li>
-                <li id="menu-academico"><a href="sunglasses.html"><i class="fa fa-calendar"></i>
+                <li id="menu-academico"><a href="{{ path('event') }}"><i class="fa fa-calendar"></i>
                         <span>Tous les évennements</span></a></li>
-                <li><a href="sweater.html"><i class="fa fa-thumbs-o-up"></i> <span>Tous les challenges</span></a></li>
+                <li><a href="{{ path('challenge') }}"><i class="fa fa-thumbs-o-up"></i> <span>Tous les challenges</span></a></li>
                 <li id="menu-academico"><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out "></i>
                         <span>Déconnexion</span></a></li>
 

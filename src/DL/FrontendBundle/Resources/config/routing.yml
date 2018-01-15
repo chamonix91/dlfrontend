@@ -1,11 +1,7 @@
-dl_frontend_homepage:
-    path:     /
-    defaults: { _controller: DLFrontendBundle:Default:index }
-
 accueil:
-    path:     /home
+    path:     /
     defaults: { _controller: DLFrontendBundle:Affichage:accueil }
 
-test:
-    path:     /test
-    defaults: { _controller: DLFrontendBundle:Default:test }
+actualite:
+    path:     /actualite
+    defaults: { _controller: DLFrontendBundle:Affichage:actualite }

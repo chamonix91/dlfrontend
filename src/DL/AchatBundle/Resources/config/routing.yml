@@ -1,6 +1,4 @@
-dl_achat_homepage:
-    path:     /
-    defaults: { _controller: DLAchatBundle:Default:index }
+
 
 allProducts:
     path:     /allProducts
@@ -21,3 +19,13 @@ supprimerPanier:
 panier:
     path:  /panier
     defaults: { _controller: DLAchatBundle:Panier:panier }
+
+commande:
+    path:  /{id}/commander
+    defaults: { _controller: DLAchatBundle:Commande:addcommande }
+
+facture:
+    path:  /facture
+    defaults: { _controller: DLAchatBundle:Main:facture}
+
+

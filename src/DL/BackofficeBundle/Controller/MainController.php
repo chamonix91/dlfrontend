@@ -10,4 +10,21 @@ class MainController extends Controller
     {
         return $this->render('DLBackofficeBundle:BackLayout:index.html.twig');
     }
+
+    public function showtreeAction()
+    {
+        return $this->render('DLBackofficeBundle:BackLayout:tree.html.twig');
+    }
+
+    public function challengeAction()
+    {
+        return $this->render('DLBackofficeBundle:BackLayout:challenge.html.twig');
+    }
+
+    public function eventAction()
+    {
+        return $this->render('DLBackofficeBundle:BackLayout:event.html.twig');
+    }
+
+
 }

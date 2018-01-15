@@ -29,7 +29,7 @@ class Mlm
     /**
      * @ORM\Column(type="integer")
      */
-    private $idpartenaire ;
+    private $idpartenaire=0 ;
 
     /**
      * @ORM\Column(type="string")
