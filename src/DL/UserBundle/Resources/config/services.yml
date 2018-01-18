@@ -2,3 +2,7 @@ services:
 #    dl_user.example:
 #        class: DL\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    DL\UserBundle\Controller\InscriptionController:
+        autowire: true # or define your controller constructor and configure its arguments explicitly
+        tags: ['controller.service_arguments']

@@ -11,8 +11,5 @@ class UserController extends Controller
         return $this->render('', array('name' => $name));
     }
 
-    public function addUserAction()
-    {
-        return $this->render('@DLUser/Backoffice/register.html.twig');
-    }
+
 }

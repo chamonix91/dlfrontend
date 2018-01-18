@@ -7,6 +7,8 @@
 </head>
 <body>
 <header class="clearfix">
+
+
     <div id="logo">
         <img src="{{ asset('Facture/logo.png') }}" >
     </div>
@@ -15,14 +17,14 @@
         <div>Dream Life</div>
         <div>15 Rue Ali ibn Abi taleb ,<br />2000 Bardo, Tunis</div>
         <div>(+216) 71 518 155</div>
-        <div><a href="mailto:network_dreamlife@dreamlife.com.tn">network_dreamlife@dreamlife.com.tn</a></div>
+        <div><a href="#">network_dreamlife@dreamlife.com.tn</a></div>
     </div>
     <div id="project">
 
-        <div><span>CLIENT</span> Nom Prenom</div>
-        <div><span>ADDRESS</span> 18 Rue salem, tunis, Tunisie</div>
-        <div><span>EMAIL</span> <a href="mailto:john@example.com">test@gmail.com</a></div>
-        <div><span>DATE</span>10/01/2018</div>
+        <div><span>CLIENT</span> {{ app.user.prenom }}{{ app.user.nom }}</div>
+        <div><span>ADDRESS</span> {{ app.user.adresse }}, {{ app.user.ville }}, {{ app.user.pays }}</div>
+        <div><span>EMAIL</span> <a href="#">{{ app.user.email }}</a></div>
+        <div><span>DATE</span>{{ "now"|date("d/m/Y") }}</div>
 
     </div>
 </header>
@@ -40,19 +42,19 @@
         <tbody>
         <tr>
             <td class="service">FTZ002</td>
-            <td class="desc">Sac à dos </td>
-            <td class="unit">120 Dt</td>
+            <td class="desc">{{ produit.description }} </td>
+            <td class="unit">{{ produit.prix }} Dt</td>
             <td class="qty">1</td>
-            <td class="total">120 Dt</td>
+            <td class="total">{{ produit.prix }} Dt</td>
         </tr>
 
         <tr>
-            <td colspan="4">SUBTOTAL</td>
-            <td class="total">120 Dt</td>
+            <td colspan="4">Sous Total</td>
+            <td class="total">{{ produit.prix }} Dt</td>
         </tr>
         <tr>
             <td colspan="4">TVA 19%</td>
-            <td class="total">22,8 Dt</td>
+            <td class="total">{{ produit.prix }} * 0,19 Dt</td>
         </tr>
         <tr>
             <td colspan="4" class="grand total"> TOTAL</td>

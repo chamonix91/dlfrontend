@@ -35,6 +35,26 @@
 </head>
 
 <body id="page-top" class="home-page">
+
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId            : 184326525493656,
+            autoLogAppEvents : true,
+            xfbml            : true,
+            version          : 'v2.11'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
 {% block navigation %}
 
     <!-- Navigation -->
@@ -45,7 +65,7 @@
                             src="{{ asset ('img/logo-white.png') }}" alt="DreamLife logo" class="logo"></a>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#"><i class="fa fa-facebook-square facebook"
+                        <a class="nav-link js-scroll-trigger" href="{{ relative_path('www.facebook.com') }}"><i class="fa fa-facebook-square facebook"
                                                                           aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item">
@@ -63,10 +83,17 @@
                         <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Connexion IR</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_registration_register') }}">Inscription</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('inscription') }}">Inscription</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('dashboard') }}">Mon compte</a>
+                        {% if app.user %}
+
+                                <a class="nav-link js-scroll-trigger" href="{{ path('allProducts') }}">
+                            {% else %}
+                                <a class="nav-link js-scroll-trigger" href="{{ path('inscription') }}">
+                            {% endif %}
+                                    Acheter</a>
+
                     </li>
                 </ul>
             </div>

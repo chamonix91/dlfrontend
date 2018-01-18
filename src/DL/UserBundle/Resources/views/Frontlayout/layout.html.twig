@@ -30,6 +30,8 @@
 
 <body id="page-top">
 
+
+
 <header class="masthead text-white d-flex">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light top-navbar" id="loginNav">
@@ -54,10 +56,17 @@
                         <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Connexion IR</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_registration_register') }}">Inscription</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('inscription') }}">Inscription</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('dashboard') }}">Mon compte</a>
+                        {% if app.user %}
+
+                        <a class="nav-link js-scroll-trigger" href="{{ path('allProducts') }}">
+                            {% else %}
+                            <a class="nav-link js-scroll-trigger" href="{{ path('inscription') }}">
+                                {% endif %}
+                                Acheter</a>
+
                     </li>
                 </ul>
             </div>

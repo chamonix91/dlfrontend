@@ -5,3 +5,7 @@ accueil:
 actualite:
     path:     /actualite
     defaults: { _controller: DLFrontendBundle:Affichage:actualite }
+
+contact:
+    path:     /contact
+    defaults: { _controller: DLFrontendBundle:Contact:createConctact }

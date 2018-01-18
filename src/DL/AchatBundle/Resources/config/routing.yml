@@ -21,11 +21,15 @@ panier:
     defaults: { _controller: DLAchatBundle:Panier:panier }
 
 commande:
-    path:  /{id}/commander
+    path:  /{id}/commande
     defaults: { _controller: DLAchatBundle:Commande:addcommande }
 
 facture:
-    path:  /facture
+    path:  /{id}/facture
     defaults: { _controller: DLAchatBundle:Main:facture}
+
+facturation:
+    path:  /{id}/facturation
+    defaults: { _controller: DLAchatBundle:Commande:facture}
 
 

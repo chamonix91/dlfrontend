@@ -85,7 +85,7 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="integer")
      */
-    private $tel;
+    private $tel=0;
 
     /**
      * @ORM\Column(type="blob")
@@ -114,7 +114,16 @@ class User extends BaseUser
      */
     private $image = "";
 
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
 
+        $this->datedenaissance = new \DateTime('now');
+        $this->enabled = 1;
+
+    }
 
 
     /**
@@ -400,11 +409,6 @@ class User extends BaseUser
     public function setRibDocument($ribDocument)
     {
         $this->ribDocument = $ribDocument;
-    }
-
-    public function __toString()
-    {
-        return $this->nom;
     }
 
 

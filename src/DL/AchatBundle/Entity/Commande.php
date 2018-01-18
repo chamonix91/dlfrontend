@@ -6,7 +6,7 @@
  * Time: 15:28
  */
 
-namespace DL\AchatBundle \Entity;
+namespace DL\AchatBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -39,6 +39,18 @@ class Commande
      * @ORM\Column(type="datetime")
      */
     private $date;
+
+    /**
+     * Commande constructor.
+     */
+    public function __construct()
+    {
+
+        $this->date = new \DateTime('now');
+
+
+    }
+
 
     /**
      * @return mixed

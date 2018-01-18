@@ -2,5 +2,7 @@ addUser:
     path:     /adduser
     defaults: { _controller: DLUserBundle:User:addUser }
 
-
+inscription:
+    path:     /inscription
+    defaults: { _controller: DLUserBundle:Inscription:register }
 

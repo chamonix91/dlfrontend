@@ -1,0 +1,42 @@
+{% extends "@DLUser/Frontlayout/layout.html.twig" %}
+
+
+
+{% block pagename %}Inscription{% endblock  %}
+{% block body %}
+    {% form_theme form with '@DLUser/Frontlayout/bootstrap_3_layout.html.twig' %}
+
+    <div class="row">
+
+
+    <div class="col-sm-3"></div>
+
+    <div class="col-sm-6">
+    <br>
+    <center><h2>Inscription</h2></center>
+    {% block fos_user_content %}
+        <br>
+        <br>
+{{ form_start(form) }}
+
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.plainPassword.first) }}
+    {{ form_row(form.plainPassword.second) }}
+
+{{ form_widget(form) }}
+
+<button type="submit">Inscription</button>
+{{ form_end(form) }}
+    </div>
+    <br>
+
+    <div class="col-sm-3"></div>
+</div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+    {% endblock fos_user_content %}
+{% endblock body %}
