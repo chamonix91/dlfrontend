@@ -5,8 +5,8 @@
 
         <div class="w_content">
             <div class="women">
-                <a href="#"><h4>Enthecwear - <span>4449 items</span></h4></a>
-                <ul class="w_nav">
+                <a href="#"><h4>Produits DreamLife  <span></span></h4></a>
+                {#<ul class="w_nav">
                     <li>Sort :</li>
                     <li><a class="active" href="#">popular</a></li>
                     |
@@ -16,7 +16,7 @@
                     |
                     <li><a href="#">price: Low High </a></li>
                     <div class="clear"></div>
-                </ul>
+                </ul>#}
                 <div class="clearfix"></div>
             </div>
             <!-- grids_of_4 -->
@@ -30,10 +30,10 @@
 
                 <div class="grid1_of_4">
                     <div class="content_box"><a href="{{ path('detailProduct', { 'id': i.id }) }}">
-                            <img src="{{ asset('Backoffice/images/1.png') }}" class="img-responsive" alt="">
+                            <img src="data:image/png;base64,{{ i.image1 }}" class="img-responsive" alt="">
                         </a>
                         <h4><a href="{{ path('detailProduct', { 'id': i.id }) }}">{{ i.libelle }}</a></h4>
-                        <p>It is a long established fact that</p>
+                        <p>{{ i.shortdescription }}</p>
                         <div class="grid_1 simpleCart_shelfItem">
 
                             <div class="item_add"><span class="item_price"><h6>{{ i.prix }}</h6></span></div>

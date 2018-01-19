@@ -6,3 +6,7 @@ inscription:
     path:     /inscription
     defaults: { _controller: DLUserBundle:Inscription:register }
 
+register1:
+    path:     /{id}/addFiles
+    defaults: { _controller: DLUserBundle:Registration:edit }
+

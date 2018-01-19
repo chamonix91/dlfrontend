@@ -12,7 +12,7 @@
     <div id="logo">
         <img src="{{ asset('Facture/logo.png') }}" >
     </div>
-    <h1>Facture N°237</h1>
+    <h1>Commande </h1>
     <div id="company" class="clearfix">
         <div>Dream Life</div>
         <div>15 Rue Ali ibn Abi taleb ,<br />2000 Bardo, Tunis</div>
@@ -32,7 +32,7 @@
     <table>
         <thead>
         <tr>
-            <th class="service">Code Produit</th>
+            <th class="service">Nom Produit</th>
             <th class="desc">DESCRIPTION</th>
             <th>Prix</th>
             <th>Qte</th>
@@ -40,8 +40,10 @@
         </tr>
         </thead>
         <tbody>
+        {% set tva = produit.prix * 0.19 %}
+        {% set ttc = produit.prix + ( produit.prix * 0.19 ) %}
         <tr>
-            <td class="service">FTZ002</td>
+            <td class="service">{{ produit.libelle }}</td>
             <td class="desc">{{ produit.description }} </td>
             <td class="unit">{{ produit.prix }} Dt</td>
             <td class="qty">1</td>
@@ -54,13 +56,15 @@
         </tr>
         <tr>
             <td colspan="4">TVA 19%</td>
-            <td class="total">{{ produit.prix }} * 0,19 Dt</td>
+            <td class="total"> {{ tva }}  </td>
         </tr>
         <tr>
             <td colspan="4" class="grand total"> TOTAL</td>
-            <td class="grand total">142,8</td>
+            <td class="grand total">{{ ttc }}</td>
         </tr>
         </tbody>
+
+
     </table>
     <div id="notices">
         <div>:</div>

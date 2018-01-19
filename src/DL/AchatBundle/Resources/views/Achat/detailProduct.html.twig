@@ -25,17 +25,17 @@
 
 
 
-                        <div class="flex-viewport" style="overflow: hidden; position: relative;"><ul class="slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-864px, 0px, 0px);"><li data-thumb="{{ asset('Backoffice/images/1.png') }}" class="clone" aria-hidden="true" style="width: 288px; float: left; display: block;">
-                                    <div class="thumb-image"> <img src="{{ asset('Backoffice/images/1.png') }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                        <div class="flex-viewport" style="overflow: hidden; position: relative;"><ul class="slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-864px, 0px, 0px);"><li data-thumb="data:image/png;base64,{{ produit.image1 }}" class="clone" aria-hidden="true" style="width: 288px; float: left; display: block;">
+                                    <div class="thumb-image"> <img src="data:image/png;base64,{{ produit.image1 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
-                                <li data-thumb="{{ asset('Backoffice/images/1.png') }}" class="" style="width: 288px; float: left; display: block;">
-                                    <div class="thumb-image"> <img src="{{ asset('Backoffice/images/1.png') }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                <li data-thumb="data:image/png;base64,{{ produit.image2 }}" class="" style="width: 288px; float: left; display: block;">
+                                    <div class="thumb-image"> <img src="data:image/png;base64,{{ produit.image2 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
-                                <li data-thumb="{{ asset('Backoffice/images/1.png') }}" style="width: 288px; float: left; display: block;" class="">
-                                    <div class="thumb-image"> <img src="{{ asset('Backoffice/images/1.png') }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                <li data-thumb="data:image/png;base64,{{ produit.image3 }}" style="width: 288px; float: left; display: block;" class="">
+                                    <div class="thumb-image"> <img src="data:image/png;base64,{{ produit.image3 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
-                                <li data-thumb="{{ asset('Backoffice/images/1.png') }}" style="width: 288px; float: left; display: block;" class="flex-active-slide">
-                                    <div class="thumb-image"> <img src="{{ asset('Backoffice/images/1.png') }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                <li data-thumb="data:image/png;base64,{{ produit.image1 }}" style="width: 288px; float: left; display: block;" class="flex-active-slide">
+                                    <div class="thumb-image"> <img src="data:image/png;base64,{{ produit.image1 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
 
                             </ul></div><ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li><li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li></ul></div>
@@ -44,27 +44,21 @@
                     <h3>{{ produit.libelle }}</h3>
                     {#<span class="brand">Brand: <a href="#">Sed do eiusmod </a></span>#}
                     <br>
-                    <span class="code">Code Produit: FTZ002</span>
-                    <p>{{ produit.description }}</p>
+                    <span class="code">Code Produit: {{ produit.codeProduit }}</span>
+                    <p>{{ produit.shortdescription }}</p>
                     <div class="price">
                         <span class="text">Price:</span>
                         <span class="price-new">{{ produit.prix }} Dt</span><span class="price-old">$100.00</span>
                         <span class="price-tax"></span><br>
                         <span class="points"><small>Price in reward points: 400</small></span><br>
                     </div>
-                    <div class="det_nav1">
-                        <h4>Select a size :</h4>
-                        <div class=" sky-form col col-4">
-                            <ul>
-                                <li><label class="checkbox"><input type="checkbox" name="checkbox"><i></i>L</label></li>
-                                <li><label class="checkbox"><input type="checkbox" name="checkbox"><i></i>S</label></li>
-                                <li><label class="checkbox"><input type="checkbox" name="checkbox"><i></i>M</label></li>
-                                <li><label class="checkbox"><input type="checkbox" name="checkbox"><i></i>XL</label></li>
-                            </ul>
-                        </div>
-                    </div>
+
                     <div class="btn_form">
+                        {% if is_granted('ROLE_NETWORKER') %}
                         <a href="{{ path('commande', { 'id': produit.id }) }}" target="_blank">Commander</a>
+                        {% else %}
+                        <a href="{{ path('achat', { 'id': produit.id }) }}" target="_blank">Commander</a>
+                        {% endif %}
                     </div>
                     {#<a href="#"><span>login to save in wishlist </span></a>#}
 

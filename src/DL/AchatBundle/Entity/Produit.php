@@ -31,6 +31,18 @@ class Produit
     private $idcategory;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $shortdescription;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $codeProduit;
+
+
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $prix;
@@ -66,7 +78,7 @@ class Produit
      */
     private $categorie;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     private $description;
 
@@ -105,6 +117,38 @@ class Produit
     public function setIdcategory($idcategory)
     {
         $this->idcategory = $idcategory;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShortdescription()
+    {
+        return $this->shortdescription;
+    }
+
+    /**
+     * @param mixed $shortdescription
+     */
+    public function setShortdescription($shortdescription)
+    {
+        $this->shortdescription = $shortdescription;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodeProduit()
+    {
+        return $this->codeProduit;
+    }
+
+    /**
+     * @param mixed $codeProduit
+     */
+    public function setCodeProduit($codeProduit)
+    {
+        $this->codeProduit = $codeProduit;
     }
 
 

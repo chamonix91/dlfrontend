@@ -18,19 +18,16 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $user = new User();
-
-        $ribdocument = $user->getRibDocument();
+       
 
         $builder
 
-            ->add('Mlm',\DL\UserBundle\Form\MlmType::class, array(
-                'label_format' => 'Informations sur votre enrolleur:',
-            ))
-            ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+            ->add('emailenrolleur',EmailType::class, array('label' => 'Email enrolleur'))
+            ->add('emaildirect',EmailType::class, array('label' => 'Email direct'))
+            ->add('email', EmailType::class, array('label' => 'Votre email'))
             ->add('email', RepeatedType::class, array(
-                'first_options'  => array('label' => 'Email'),
-                'second_options' => array('label' => 'Repeat email'),
+                'first_options'  => array('label' => 'Votre Email'),
+                'second_options' => array('label' => 'Répétez votre email'),
             ))
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('plainPassword', RepeatedType::class, array(
@@ -55,9 +52,7 @@ class RegistrationType extends AbstractType
             ->add('tel')
 
 
-            ->add('roles', ChoiceType::class, array(
-                'label' => 'Inscription en tant que: ', 'choices' => array(
-                    'GUEST' => 'ROLE_USER', 'NETWORKER' => 'ROLE_NETWORKER'), 'required' => true, 'multiple' => true,))
+
         ;
     }
 

@@ -94,6 +94,8 @@ class Mlm
      */
     public function __construct()
     {
+
+
         $this->datecreation = new \DateTime('now');
         $this->dateaffectation = new \DateTime('now');
     }
@@ -313,6 +315,14 @@ class Mlm
     private function getUser()
     {
         return $this->getUser();
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setIdPartenaireValue()
+    {
+        $this->idpartenaire = $this->getUser();
     }
 
 

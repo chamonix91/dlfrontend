@@ -118,7 +118,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                 </div>
                                 <div class="cart box_1">
-                                    <a href="checkout.html">
+                                    <a href="#">
                                         <h3><span class="simpleCart_total">0.00 Dt</span> (<span id="simpleCart_quantity"
                                                                                                class="simpleCart_quantity">0</span>
                                             produit)<img src="{{ asset ('Backoffice/images/bag.png') }}" alt=""></h3>
@@ -127,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="create_btn">
-                                    <a href="checkout.html">CHECKOUT</a>
+                                    <a href="#">CHECKOUT</a>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -837,22 +837,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="footer">
                         <div class="col-md-3 cust">
-                            <h4>service à la clientèle</h4>
+                            <h4>Service à la clientèle</h4>
                             <li><a href="contact.html">Center d'aide</a></li>
                             <li><a href="faq.html">FAQ</a></li>
                             <li><a href="details.html">Comment acheter</a></li>
                             <li><a href="checkout.html">Livraison</a></li>
                         </div>
                         <div class="col-md-2 abt">
-                            <h4>ABOUT US</h4>
-                            <li><a href="products.html">Our Stories</a></li>
-                            <li><a href="products.html">Press</a></li>
-                            <li><a href="faq.html">Career</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <h4>Qui sommes-nous</h4>
+                            <li><a href="/#a-propos">Notre société</a></li>
+                            <li><a href="{{ path('contact') }}">Contact</a></li>
                         </div>
                         <div class="col-md-2 myac">
-                            <h4>MY ACCOUNT</h4>
-                            <li><a href="register.html">Mon arbre</a></li>
+                            <h4>Mon compte </h4>
+                            <li><a href="{{ path('fos_user_profile_show') }}">Mon arbre</a></li>
                             <li><a href="checkout.html">Mes commandes</a></li>
                             <li><a href="details.html">Mes informations</a></li>
                         </div>

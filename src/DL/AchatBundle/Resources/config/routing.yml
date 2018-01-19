@@ -24,6 +24,10 @@ commande:
     path:  /{id}/commande
     defaults: { _controller: DLAchatBundle:Commande:addcommande }
 
+achat:
+    path:  /{id}/achat
+    defaults: { _controller: DLAchatBundle:Achat:addachat }
+
 facture:
     path:  /{id}/facture
     defaults: { _controller: DLAchatBundle:Main:facture}

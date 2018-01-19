@@ -33,6 +33,15 @@ class User extends BaseUser
      */
     private $Mlm ;
 
+    /**
+     * @ORM\Column(type="string" ,nullable=true)
+     */
+    private $emailenrolleur = "";
+
+    /**
+     * @ORM\Column(type="string" ,nullable=true)
+     */
+    private $emaildirect = "";
 
     /**
      * @ORM\Column(type="string" ,nullable=true)
@@ -121,7 +130,11 @@ class User extends BaseUser
     {
 
         $this->datedenaissance = new \DateTime('now');
+        $this->roles = array('ROLE_NETWORKER');
         $this->enabled = 1;
+
+
+
 
     }
 
@@ -141,6 +154,42 @@ class User extends BaseUser
     {
         $this->Mlm = $Mlm;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEmailenrolleur()
+    {
+        return $this->emailenrolleur;
+    }
+
+    /**
+     * @param mixed $emailenrolleur
+     */
+    public function setEmailenrolleur($emailenrolleur)
+    {
+        $this->emailenrolleur = $emailenrolleur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmaildirect()
+    {
+        return $this->emaildirect;
+    }
+
+    /**
+     * @param mixed $emaildirect
+     */
+    public function setEmaildirect($emaildirect)
+    {
+        $this->emaildirect = $emaildirect;
+    }
+
+
+
+
 
 
     public function setEmail($email)

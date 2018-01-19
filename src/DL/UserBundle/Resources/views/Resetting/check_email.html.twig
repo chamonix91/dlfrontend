@@ -1,9 +1,18 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends "@DLUser/Frontlayout/layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
-
+{% block pagename %}Changement Mot de passe {% endblock pagename %}
+{% block body %}
 {% block fos_user_content %}
-<p>
-{{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
-</p>
+
+    <br><br><br><br>
+    <div class="col-md">
+
+    <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Félicitation! </strong>{{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+    </div>
+    </div>
+    <br><br><br><br>
 {% endblock %}
+{% endblock body %}

@@ -1,5 +1,9 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends "@DLBackoffice/BackLayout/Layout.html.twig" %}
 
+{% block content %}
+    <div class="women_main">
 {% block fos_user_content %}
 {% include "@FOSUser/Profile/show_content.html.twig" %}
 {% endblock fos_user_content %}
+    </div>
+{% endblock content %}

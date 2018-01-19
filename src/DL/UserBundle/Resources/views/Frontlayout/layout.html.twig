@@ -13,23 +13,24 @@
     <title>DreamLife - Informations personnelles</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset ('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset ('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="{{ asset ('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="{{ asset ('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
-    <link href="{{ asset ('vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet">
+    <link href="{{ asset ('vendor/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{ asset ('css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset ('css/style.css') }}" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
-
 
 
 <header class="masthead text-white d-flex">
@@ -37,13 +38,16 @@
     <nav class="navbar navbar-expand-lg navbar-light top-navbar" id="loginNav">
         <div class="container">
             <div class="social-links">
-                <a class="brand js-scroll-trigger d-table d-md-none" href="#page-top"><img src="{{ asset ('img/logo-white.png')}}" alt="DreamLife logo" class="logo"></a>
+                <a class="brand js-scroll-trigger d-table d-md-none" href="#page-top"><img
+                            src="{{ asset ('img/logo-white.png') }}" alt="DreamLife logo" class="logo"></a>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#"><i class="fa fa-facebook-square facebook" aria-hidden="true"></i></a>
+                        <a class="nav-link js-scroll-trigger" href="#"><i class="fa fa-facebook-square facebook"
+                                                                          aria-hidden="true"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#"><i class="fa fa-youtube-square youtube" aria-hidden="true"></i></a>
+                        <a class="nav-link js-scroll-trigger" href="#"><i class="fa fa-youtube-square youtube"
+                                                                          aria-hidden="true"></i></a>
                     </li>
                 </ul>
             </div>
@@ -53,7 +57,8 @@
                         <input type="search" placeholder="Rechercher..." class="search-input w-100">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Connexion IR</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Connexion
+                            IR</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ path('inscription') }}">Inscription</a>
@@ -63,7 +68,7 @@
 
                         <a class="nav-link js-scroll-trigger" href="{{ path('allProducts') }}">
                             {% else %}
-                            <a class="nav-link js-scroll-trigger" href="{{ path('inscription') }}">
+                            <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">
                                 {% endif %}
                                 Acheter</a>
 
@@ -90,7 +95,8 @@
                         <a class="nav-link js-scroll-trigger" href="{{ path('actualite') }}">Actualités</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('accueil') }}#contact">Centre d'assistance</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('accueil') }}#contact">Centre
+                            d'assistance</a>
                     </li>
                 </ul>
             </div>
@@ -112,178 +118,189 @@
 
 <section>
     {% block body %}
-    <div class="container py-4">
-        <div class="row">
-            <div class="col-lg-10 mx-auto py-5 font-weight-bold text-primary">
-                <h2 class="text-center">INFORMATIONS PERSONNELLES</h2>
-                <form class="pt-5 mt-5 info-perso">
-                    <div class="row">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-lg-10 mx-auto py-5 font-weight-bold text-primary">
+                    <h2 class="text-center">INFORMATIONS PERSONNELLES</h2>
+                    <form class="pt-5 mt-5 info-perso">
+                        <div class="row">
 
-                        <div class="col-12">
-                            <label class="pt-3" for="email-enrolleur">Email enrôleur</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="email" id="email-enrolleur">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="email">Votre email</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="email" id="email">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="email-confirm">Répétez votre email</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="email" id="email-confirm">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="password">Mot de passe</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="password" id="password">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="password-confirm">Répétez mot de passe</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="password" id="password-confirm">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="civilite">Civilité</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="text" id="civilite">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="nom">Nom</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="text" id="nom">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="prenom">Prénom</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="text" id="prenom">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3">Date de naissance</label>
-                        </div>
-                        <div class="col-md-1 col-sm-2 col-4 pr-sm-0"><input class="w-100 mt-1 mb-3" type="number"></div>
-                        <div class="col-md-1 col-sm-2 col-4 pr-sm-0"><input class="w-100 mt-1 mb-3" type="number"></div>
-                        <div class="col-md-1 col-sm-2 col-4 pr-sm-0"><input class="w-100 mt-1 mb-3" type="number"></div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="pays">Pays</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="text" id="pays">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="mobile-phone">Téléphone mobile</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="tel" id="mobile-phone">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="cin">CIN</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="number" id="cin">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="rib">RIB</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="w-100 mt-1 mb-3" type="number" id="rib">
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="cin-img">Image de la CIN</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="input-file" type="file" id="cin-img" required="" value="Choisissez un fichier">
-                            <label for="cin-img" class="input-file-label text-center mt-1 mb-3">Choisissez un fichier</label>
-                        </div>
-
-                        <div class="col-12">
-                            <label class="pt-3" for="rib-img">Image du RIB</label>
-                        </div>
-                        <div class="col-12">
-                            <input class="input-file" type="file" id="rib-img" required="" value="Choisissez un fichier">
-                            <label for="rib-img" class="input-file-label text-center mt-1 mb-3">Choisissez un fichier</label>
-                        </div>
-
-                        <div class="col-12 pt-3 my-2">
-                            <div class="custom-checkbox">
-                                <label class="container" for="terms">
-                                    Accepter les conditions d'utilisation de DreamLife. (<u><a href="#">Voir les conditions</a></u>)
-                                    <input type="checkbox" id="terms">
-                                    <span class="checkmark"></span>
-                                </label>
+                            <div class="col-12">
+                                <label class="pt-3" for="email-enrolleur">Email enrôleur</label>
                             </div>
-                        </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="email" id="email-enrolleur">
+                            </div>
 
-                        <div class="col-12">
-                            <input class="mt-1 mb-3" type="submit" value="Créer un compte">
-                        </div>
+                            <div class="col-12">
+                                <label class="pt-3" for="email">Votre email</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="email" id="email">
+                            </div>
 
-                    </div>
-                </form>
+                            <div class="col-12">
+                                <label class="pt-3" for="email-confirm">Répétez votre email</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="email" id="email-confirm">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3" for="password">Mot de passe</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="password" id="password">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3" for="password-confirm">Répétez mot de passe</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="password" id="password-confirm">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3" for="civilite">Civilité</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="text" id="civilite">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3" for="nom">Nom</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="text" id="nom">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3" for="prenom">Prénom</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="text" id="prenom">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3">Date de naissance</label>
+                            </div>
+                            <div class="col-md-1 col-sm-2 col-4 pr-sm-0"><input class="w-100 mt-1 mb-3" type="number">
+                            </div>
+                            <div class="col-md-1 col-sm-2 col-4 pr-sm-0"><input class="w-100 mt-1 mb-3" type="number">
+                            </div>
+                            <div class="col-md-1 col-sm-2 col-4 pr-sm-0"><input class="w-100 mt-1 mb-3" type="number">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3" for="pays">Pays</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="text" id="pays">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3" for="mobile-phone">Téléphone mobile</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="tel" id="mobile-phone">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3" for="cin">CIN</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="number" id="cin">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3" for="rib">RIB</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="w-100 mt-1 mb-3" type="number" id="rib">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3" for="cin-img">Image de la CIN</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="input-file" type="file" id="cin-img" required=""
+                                       value="Choisissez un fichier">
+                                <label for="cin-img" class="input-file-label text-center mt-1 mb-3">Choisissez un
+                                    fichier</label>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="pt-3" for="rib-img">Image du RIB</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="input-file" type="file" id="rib-img" required=""
+                                       value="Choisissez un fichier">
+                                <label for="rib-img" class="input-file-label text-center mt-1 mb-3">Choisissez un
+                                    fichier</label>
+                            </div>
+
+                            <div class="col-12 pt-3 my-2">
+                                <div class="custom-checkbox">
+                                    <label class="container" for="terms">
+                                        Accepter les conditions d'utilisation de DreamLife. (<u><a href="#">Voir les
+                                                conditions</a></u>)
+                                        <input type="checkbox" id="terms">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <input class="mt-1 mb-3" type="submit" value="Créer un compte">
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     {% endblock body %}
 </section>
 
 
-
 <!-- Footer -->
 {% block footer %}
-<footer class="pt-5 pb-4 bg-primary">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h3 class="text-white font-weight-bold text-center text-md-left">FOLLOW US</h3>
-                        <ul class="social-links navbar-nav mx-auto mb-4 w-100 text-center text-md-left">
-                            <li class="nav-item ml-auto mr-2 mx-md-0">
-                                <a class="nav-link js-scroll-trigger" href="#"><i class="fa fa-facebook-square text-white" aria-hidden="true"></i></a>
-                            </li>
-                            <li class="nav-item mr-auto ml-2 mx-md-4">
-                                <a class="nav-link js-scroll-trigger" href="#"><i class="fa fa-youtube-square text-white" aria-hidden="true"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="float-md-right text-center">
-                            <h5 class="text-white font-weight-bold">CREDIT CARDS ACCEPTED</h5>
-                            <div class="credit-cards mx-auto w-100">
-                                <img class="mt-4" src="{{ asset ('img/credit-cards/visa-mastercard.png') }}" alt="visa-mastercard">
-                                <img class="mt-4" src="{{ asset ('img/credit-cards/edinar.jpg') }}" alt="edinar">
+    <footer class="pt-5 pb-4 bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="text-white font-weight-bold text-center text-md-left">FOLLOW US</h3>
+                            <ul class="social-links navbar-nav mx-auto mb-4 w-100 text-center text-md-left">
+                                <li class="nav-item ml-auto mr-2 mx-md-0">
+                                    <a class="nav-link js-scroll-trigger" href="#"><i
+                                                class="fa fa-facebook-square text-white" aria-hidden="true"></i></a>
+                                </li>
+                                <li class="nav-item mr-auto ml-2 mx-md-4">
+                                    <a class="nav-link js-scroll-trigger" href="#"><i
+                                                class="fa fa-youtube-square text-white" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="float-md-right text-center">
+                                <h5 class="text-white font-weight-bold">CREDIT CARDS ACCEPTED</h5>
+                                <div class="credit-cards mx-auto w-100">
+                                    <img class="mt-4" src="{{ asset ('img/credit-cards/visa-mastercard.png') }}"
+                                         alt="visa-mastercard">
+                                    <img class="mt-4" src="{{ asset ('img/credit-cards/edinar.jpg') }}" alt="edinar">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <p class="col-12 m-0 pt-5 mt-4 text-center text-white font-eras font-weight-light">Copyright © 2018
+                    DreamLife. All Rights Reserved</p>
             </div>
-            <p class="col-12 m-0 pt-5 mt-4 text-center text-white font-eras font-weight-light">Copyright © 2018 DreamLife. All Rights Reserved</p>
         </div>
-    </div>
-    <!-- /.container -->
-</footer>
+        <!-- /.container -->
+    </footer>
 {% endblock footer %}
 <!-- Bootstrap core JavaScript -->
 <script src="{{ asset ('vendor/jquery/jquery.min.js') }}"></script>

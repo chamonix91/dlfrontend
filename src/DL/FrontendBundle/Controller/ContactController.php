@@ -69,6 +69,8 @@ class ContactController extends Controller
             $em->persist($contact);
             $em->flush();
 
+            return $this->redirectToRoute('contact');
+
 
         }
 
