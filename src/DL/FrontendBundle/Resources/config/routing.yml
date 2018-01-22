@@ -9,3 +9,7 @@ actualite:
 contact:
     path:     /contact
     defaults: { _controller: DLFrontendBundle:Contact:createConctact }
+
+detailproduit:
+    path:     /detail
+    defaults: { _controller: DLFrontendBundle:Main:detailproduit }

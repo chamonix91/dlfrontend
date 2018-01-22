@@ -26,5 +26,15 @@ class MainController extends Controller
         return $this->render('DLBackofficeBundle:BackLayout:event.html.twig');
     }
 
+    public function erreuradduserAction()
+    {
+        return $this->render('DLBackofficeBundle:BackLayout:erreuradduser.html.twig');
+    }
+
+    public function erreurarbreAction()
+    {
+        return $this->render('DLBackofficeBundle:BackLayout:erreurarbre.html.twig');
+    }
+
 
 }

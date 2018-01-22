@@ -10,4 +10,9 @@ class MainController extends Controller
     {
         return $this->render('', array('name' => $name));
     }
+
+    public function detailproduitAction()
+    {
+        return $this->render('DLFrontendBundle:Front:detailproduit.html.twig');
+    }
 }

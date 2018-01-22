@@ -18,7 +18,11 @@ class ProduitController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         $products=$em->getRepository('DLAchatBundle:Produit')->findAll();
-        return $this->render('@DLAchat/Achat/allproducts.html.twig',array('products'=>$products));
+      $imgs = array(); 
+       for($c=0;$c<count($products);$c++){
+       array_push($imgs,stream_get_contents($products[$c]->getImage1()));
+       }
+        return $this->render('@DLAchat/Achat/allproducts.html.twig',array('products'=>$products,'imgs'=>$imgs));
     }
 
     public function detailProductAction(Produit $produit)
@@ -33,7 +37,7 @@ class ProduitController extends Controller
 
         return $this->render('@DLAchat/Achat/detailProduct.html.twig', array(
             'image1'=>$image1,
-            'image2'=>$image2,
+            'img2'=>$image2,
             'image3'=>$image3,
             'produit' => $produit,
             'form' => $form->createView(),

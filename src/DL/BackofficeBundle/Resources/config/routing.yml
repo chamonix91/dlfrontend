@@ -16,3 +16,11 @@ event:
 challenge:
     path:     /challenges
     defaults: { _controller: DLBackofficeBundle:Main:challenge }
+
+erreuradduser:
+    path:     /erreuradd
+    defaults: { _controller: DLBackofficeBundle:Main:erreuradduser }
+
+erreurarbre:
+    path:     /erreurarbre
+    defaults: { _controller: DLBackofficeBundle:Main:erreurarbre }

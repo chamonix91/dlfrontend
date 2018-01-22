@@ -25,17 +25,17 @@
 
 
 
-                        <div class="flex-viewport" style="overflow: hidden; position: relative;"><ul class="slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-864px, 0px, 0px);"><li data-thumb="data:image/png;base64,{{ produit.image1 }}" class="clone" aria-hidden="true" style="width: 288px; float: left; display: block;">
-                                    <div class="thumb-image"> <img src="data:image/png;base64,{{ produit.image1 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                        <div class="flex-viewport" style="overflow: hidden; position: relative;"><ul class="slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-864px, 0px, 0px);"><li data-thumb="{{ image1 }}" class="clone" aria-hidden="true" style="width: 288px; float: left; display: block;">
+                                    <div class="thumb-image"> <img src="{{ image1 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
-                                <li data-thumb="data:image/png;base64,{{ produit.image2 }}" class="" style="width: 288px; float: left; display: block;">
-                                    <div class="thumb-image"> <img src="data:image/png;base64,{{ produit.image2 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                <li data-thumb="{{ img2 }}" class="" style="width: 288px; float: left; display: block;">
+                                    <div class="thumb-image"> <img src="{{ img2 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
-                                <li data-thumb="data:image/png;base64,{{ produit.image3 }}" style="width: 288px; float: left; display: block;" class="">
-                                    <div class="thumb-image"> <img src="data:image/png;base64,{{ produit.image3 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                <li data-thumb="{{ image3 }}" style="width: 288px; float: left; display: block;" class="">
+                                    <div class="thumb-image"> <img src="{{ image3 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
-                                <li data-thumb="data:image/png;base64,{{ produit.image1 }}" style="width: 288px; float: left; display: block;" class="flex-active-slide">
-                                    <div class="thumb-image"> <img src="data:image/png;base64,{{ produit.image1 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                <li data-thumb="{{ image1 }}" style="width: 288px; float: left; display: block;" class="flex-active-slide">
+                                    <div class="thumb-image"> <img src="{{ image1 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
 
                             </ul></div><ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li><li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li></ul></div>

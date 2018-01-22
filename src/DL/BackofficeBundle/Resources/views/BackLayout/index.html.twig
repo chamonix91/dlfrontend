@@ -65,8 +65,13 @@
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-4">
+                                            {% if is_granted('ROLE_ADMIN') %}
                                             <a class="continue" href="{{ path('tree') }}"
                                                target="_blank">Voir mon arbre</a>
+                                            {% else %}
+                                            <a class="continue" href="{{ path('erreurarbre') }}"
+                                               target="_blank">Voir mon arbre</a>
+                                            {% endif %}
                                         </div>
                                         <div class="col-md-4"></div>
                                     </div>
@@ -110,8 +115,13 @@
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-4">
+                                            {% if is_granted('ROLE_ADMIN') %}
                                             <a class="continue" href="{{ path('fos_user_registration_register') }}"
                                                target="_blank">Ajouter Partenaire </a>
+                                            {% else %}
+                                            <a class="continue" href="{{ path('erreuradduser') }}"
+                                               target="_blank">Ajouter Partenaire </a>
+                                            {% endif %}
                                         </div>
                                         <div class="col-md-4"></div>
                                     </div>
