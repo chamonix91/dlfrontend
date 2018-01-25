@@ -13,3 +13,4 @@ contact:
 detailproduit:
     path:     /detail
     defaults: { _controller: DLFrontendBundle:Main:detailproduit }
+

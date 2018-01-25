@@ -50,12 +50,15 @@ class RegistrationController extends Controller
 
 
             $normalizer = new DataUriNormalizer();
-            $getrib= $user->getRibDocument();
-            $rib = $normalizer->normalize(new \SplFileObject($getrib));
 
-            $getcin= $user->getRibDocument();
-            $cin = $normalizer->normalize(new \SplFileObject($getcin));
+            $getrib= $user->getRibDocument();
+            $rib = $normalizer->normalize(new \SplFileObject($user->getRibDocument()));
+
+            $getcin= $user->getCinDocument();
+            $cin = $normalizer->normalize(new \SplFileObject($user->getCinDocument()));
+
             $user->setCinDocument($cin);
+            $user->setRibDocument($rib);
 
 
 
@@ -63,19 +66,21 @@ class RegistrationController extends Controller
             $mlm -> setCodeparent($enrolleur->getCode());
             $mlm->setCodedirect($direct->getCode());
 
-            if ($mlm1->getCodegauche()== "") {
+            if ($mlm1->getCodegauche()== NULL ) {
                 $mlm1->setCodegauche($code);
             }
             else {
                 $mlm1->setCodedroite($code);
             }
+            $em->persist($user);
             $em->persist($mlm1);
             $em->persist($mlm);
             $em->flush();
 
 
 
-            return $this->redirectToRoute('register1', array('id' => $user->getId()));
+
+            return $this->redirectToRoute('dashboard', array('id' => $user->getId()));
         }
 
         return $this->render('@DLUser/Registration/register1.html.twig', array(

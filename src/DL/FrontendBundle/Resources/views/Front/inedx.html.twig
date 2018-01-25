@@ -5,6 +5,52 @@
 
     {% block header %}
 
+        <!-- model start -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            /* The Modal (background) */
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0, 0, 0); /* Fallback color */
+                background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+            }
+
+            /* Modal Content */
+            .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+            }
+
+            /* The Close Button */
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
+        <!-- model end -->
+
+
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
@@ -37,19 +83,22 @@
 <body id="page-top" class="home-page">
 
 <script>
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
-            appId            : 184326525493656,
-            autoLogAppEvents : true,
-            xfbml            : true,
-            version          : 'v2.11'
+            appId: 184326525493656,
+            autoLogAppEvents: true,
+            xfbml: true,
+            version: 'v2.11'
         });
     };
 
-    (function(d, s, id){
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
@@ -79,20 +128,32 @@
                     <li class="nav-item">
                         <input type="search" placeholder="Rechercher..." class="search-input w-100">
                     </li>
+                    {% if app.user %}
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Connexion IR</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('dashboard') }}">Mon compte
+                            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_logout') }}">déconnexion</a>
+                    </li>
+                    <li class="nav-item">
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Connexion
+                            IR</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ path('inscription') }}">Inscription</a>
                     </li>
                     <li class="nav-item">
+                        {% endif %}
                         {% if app.user %}
 
-                                <a class="nav-link js-scroll-trigger" href="{{ path('allProducts') }}">
+                        <a class="nav-link js-scroll-trigger" href="{{ path('allProducts') }}">
                             {% else %}
-                                <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">
-                            {% endif %}
-                                    Acheter</a>
+                            <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">
+                                {% endif %}
+                                Achat</a>
 
                     </li>
                 </ul>
@@ -250,36 +311,68 @@
 
         <div class="container-fluid products">
             <div class="row popup-gallery">
+                {% for i in products %}
+
                 <div class="col-lg-4 col-sm-6">
                     <a class="product-box sr-button" href="#">
-                        <div style="background-image: url('{{ asset ('img/product/thumbnails/1.png') }}')" class="product-img"></div>
+                        <div style="background-image: url('{{ asset ('img/product/thumbnails/1.png') }}')"
+                             class="product-img"></div>
                         <div class="product-box-caption">
                             <div class="product-box-caption-content">
-                                <img src="{{ asset ('img/eye.png') }}" class="eye-icon" alt="eye-icon">
+                                <img src="{{ asset ('img/eye.png') }}" class="eye-icon" alt="eye-icon" onclick="callmodal({{ i.id }}1,{{ i.id }})" id={{ i.id }}>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="product-box sr-button" href="#">
-                        <div style="background-image: url('{{ asset ('img/product/thumbnails/2.png') }}')" class="product-img"></div>
-                        <div class="product-box-caption">
-                            <div class="product-box-caption-content">
-                                <img src="{{ asset ('img/eye.png') }}" class="eye-icon" alt="eye-icon">
-                            </div>
-                        </div>
-                    </a>
+
+                <!-- The Modal -->
+                <div id="{{ i.id }}1" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>{{ i.id }}</p>
+                    </div>
+
                 </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="product-box sr-button" href="#">
-                        <div style="background-image: url('{{ asset ('img/product/thumbnails/3.png') }}')" class="product-img"></div>
-                        <div class="product-box-caption">
-                            <div class="product-box-caption-content">
-                                <img src="{{ asset ('img/eye.png') }}" class="eye-icon" alt="eye-icon">
-                            </div>
-                        </div>
-                    </a>
-                </div>
+
+                    <!-- script model  -->
+
+<script>
+                   // callmodal({{ i.id }}1,{{ i.id }});
+</script>
+
+                {% endfor %}
+                <script>
+        function callmodal(id,id1) {
+            // Get the modal
+            var modal = document.getElementById(id);
+
+            // Get the button that opens the modal
+            var btn = document.getElementById(id1);
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+                </script>
+
             </div>
         </div>
     </section>
@@ -343,7 +436,8 @@
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-envelope fa-3x mb-3 sr-contact text-primary"></i>
                     <p class="text-primary contact-text font-eras font-weight-light"><a
-                                href="mailto:network_dreamlife@dreamlife.com.tn">network_dreamlife@dreamlife.com.tn</a></p>
+                                href="mailto:network_dreamlife@dreamlife.com.tn">network_dreamlife@dreamlife.com.tn</a>
+                    </p>
                 </div>
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-mobile fa-3x mb-3 sr-contact text-primary"></i>
@@ -351,7 +445,8 @@
                 </div>
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-map-marker fa-3x mb-3 sr-contact text-primary"></i>
-                    <p class="text-primary contact-text font-eras font-weight-light">3 ème étage, 39 rue de Paris RP Tunis 1001
+                    <p class="text-primary contact-text font-eras font-weight-light">3 ème étage, 39 rue de Paris RP
+                        Tunis 1001
                         Tunis</p>
                 </div>
             </div>
@@ -360,12 +455,13 @@
             <div class="px-5 mb-5">
                 <div class="map mx-lg-5">
                     <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3194.639490489883!2d10.17879611528996!3d36.8031931799479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd3471d22c23e5%3A0x9fac3d919b7d2bf5!2sDreamlife!5e0!3m2!1sfr!2stn!4v1516457878575"></iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3194.639490489883!2d10.17879611528996!3d36.8031931799479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd3471d22c23e5%3A0x9fac3d919b7d2bf5!2sDreamlife!5e0!3m2!1sfr!2stn!4v1516457878575"></iframe>
                 </div>
             </div>
 
         </div>
     </section>
+
 {% endblock body %}
 
 {% block footer %}

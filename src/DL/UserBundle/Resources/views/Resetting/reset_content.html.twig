@@ -1,8 +1,31 @@
+{% extends "@DLUser/Frontlayout/layout.html.twig" %}
+
+{% block pagename %}Changement de mot de passe {% endblock pagename %}
+{% block body %}
+
+
 {% trans_default_domain 'FOSUserBundle' %}
+
+<br><br><br><br><br>
+<div class="row">
+
+    <div class="col-md-3"></div>
+    <br><br><br><br><br>
+    <div class="col-md-6">
+
+
+
+
 
 {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
     {{ form_widget(form) }}
     <div>
-        <input type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+        <input type="submit" value="Envoyer" />
     </div>
 {{ form_end(form) }}
+    </div>    <br><br><br><br><br>
+    <br><br><br><br><br>
+
+    <div class="col-md-3"></div>
+</div>
+{% endblock body %}

@@ -56,6 +56,16 @@
                     <li class="nav-item">
                         <input type="search" placeholder="Rechercher..." class="search-input w-100">
                     </li>
+                    {% if app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ path('dashboard') }}">Mon compte
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_logout') }}">déconnexion</a>
+                    </li>
+                    <li class="nav-item">
+                        {% else %}
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Connexion
                             IR</a>
@@ -64,6 +74,7 @@
                         <a class="nav-link js-scroll-trigger" href="{{ path('inscription') }}">Inscription</a>
                     </li>
                     <li class="nav-item">
+                        {% endif %}
                         {% if app.user %}
 
                         <a class="nav-link js-scroll-trigger" href="{{ path('allProducts') }}">

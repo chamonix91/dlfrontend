@@ -10,3 +10,6 @@ register1:
     path:     /{id}/addFiles
     defaults: { _controller: DLUserBundle:Registration:edit }
 
+successadd:
+    path:     /successadd
+    defaults: { _controller: DLUserBundle:User:successadd }

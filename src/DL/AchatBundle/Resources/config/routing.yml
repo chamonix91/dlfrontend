@@ -36,4 +36,8 @@ facturation:
     path:  /{id}/facturation
     defaults: { _controller: DLAchatBundle:Commande:facture}
 
+listproduitaccueil:
+    path:  /
+    defaults: { _controller: DLFrontendBundle:Affichage:listProducts}
+
 

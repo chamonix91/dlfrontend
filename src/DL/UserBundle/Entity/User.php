@@ -5,6 +5,8 @@ namespace DL\UserBundle\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  *
@@ -12,6 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
  * User
  * @ORM\Table(name="utilisateur")
  * @ORM\Entity
+ * @UniqueEntity(
+ *     fields={"code","username"}
+ *     )
  */
 class User extends BaseUser
 {
@@ -23,105 +28,97 @@ class User extends BaseUser
     protected $id;
 
 
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="DL\UserBundle\Entity\Mlm", cascade={"persist"})
-     * @ORM\JoinColumn(name="mlm_id", referencedColumnName="id")
-     * @Assert\Type(type="DL\UserBundle\Entity\Mlm")
-     * @Assert\Valid()
-     *
-     */
-    private $Mlm ;
+
 
     /**
      * @ORM\Column(type="string" ,nullable=true)
      */
-    private $emailenrolleur = "";
+    private $emailenrolleur ;
 
     /**
      * @ORM\Column(type="string" ,nullable=true)
      */
-    private $emaildirect = "";
+    private $emaildirect ;
 
     /**
      * @ORM\Column(type="string" ,nullable=true)
      */
-    private $nom = "";
+    private $nom ;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
-    private $prenom = "";
+    private $prenom ;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
-    private $cin = "";
+    private $cin ;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
     private $rib = "";
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
-    private $adresse = "";
+    private $adresse ;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
     private $ville = "";
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
-    private $pays = "";
+    private $pays ;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer" ,nullable=true)
      */
-    private $codepostal = 0;
+    private $codepostal ;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      *
      */
-    private $code="";
+    private $code;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string" ,nullable=true)
      */
-    private $tel=0;
+    private $tel;
 
     /**
-     * @ORM\Column(type="blob")
+     * @ORM\Column(type="blob" ,nullable=true)
      */
-    private $ribDocument = "";
+    private $ribDocument;
 
     /**
-     * @ORM\Column(type="blob")
+     * @ORM\Column(type="blob" ,nullable=true)
      */
-    private $cinDocument = "";
+    private $cinDocument ;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
     private $civilite="";
 
     /**
      *
      * @var \DateTime
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime" ,nullable=true)
      */
     private $datedenaissance;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
-    private $image = "";
+    private $image ;
 
     /**
      * User constructor.
@@ -132,28 +129,13 @@ class User extends BaseUser
         $this->datedenaissance = new \DateTime('now');
         $this->roles = array('ROLE_NETWORKER');
         $this->enabled = 1;
+        $this->code = random_int(25,982776);
 
 
 
 
     }
 
-
-    /**
-     * @return mixed
-     */
-    public function getMlm()
-    {
-        return $this->Mlm;
-    }
-
-    /**
-     * @param mixed $Mlm
-     */
-    public function setMlm(Mlm $Mlm= null)
-    {
-        $this->Mlm = $Mlm;
-    }
 
     /**
      * @return mixed

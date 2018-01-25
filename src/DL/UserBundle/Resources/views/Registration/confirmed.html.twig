@@ -1,10 +1,31 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends "@DLUser/Frontlayout/layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% block pagename %}Bienvenue{% endblock  %}
+{% block body %}
+<br><br><br><br><br>
+<div class="row">
+
+    <div class="col-md-3"></div>
+    <br><br><br><br><br>
+    <div class="col-md-6">
+<div class="alert alert-dismissible alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
 {% block fos_user_content %}
     <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
     {% if targetUrl %}
     <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
     {% endif %}
 {% endblock fos_user_content %}
+</div>    <br><br><br><br><br>
+        <br><br><br><br><br>
+
+        <div class="col-md-3"></div>
+</div>
+
+{% endblock body %}
+
+
+
+

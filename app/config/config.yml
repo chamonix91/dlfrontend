@@ -75,15 +75,15 @@ fos_user:
      firewall_name: main
      user_class: DL\UserBundle\Entity\User
      from_email:
-         address:        dreamlifedev@gmail.com
-         sender_name:    dreamlife
+         address:  dreamlifedev@gmail.com
+         sender_name: dreamlife
      registration:
          form:
              type: DL\UserBundle\Form\RegistrationType
      resetting:
          email:
              from_email:
-                 address:        dreamlifedev@gmail.com
-                 sender_name:    dreamlife
+                 address: dreamlifedev@gmail.com
+                 sender_name: dreamlife
 
 

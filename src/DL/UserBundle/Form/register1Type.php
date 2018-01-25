@@ -23,8 +23,8 @@ class register1Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ribDocument', FileType::class,  array('data_class' => null))
-            ->add('cinDocument', FileType::class, array('data_class' => null));
+            ->add('ribDocument', FileType::class,  array('data_class' => null,'label' => 'Votre Justificatif de paiement  '))
+            ->add('cinDocument', FileType::class, array('data_class' => null,'label' => 'Votre CIN  '));
 
 
     }

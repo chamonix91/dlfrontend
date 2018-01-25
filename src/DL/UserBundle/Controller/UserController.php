@@ -11,5 +11,10 @@ class UserController extends Controller
         return $this->render('', array('name' => $name));
     }
 
+    public function successaddAction($name)
+    {
+        return $this->render('@DLUser/Registration/successaddfiles.html.twig');
+    }
+
 
 }
