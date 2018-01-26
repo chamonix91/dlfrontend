@@ -27,66 +27,66 @@ class Mlm
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer" ,nullable=true)
      */
-    private $idpartenaire=0 ;
+    private $idpartenaire ;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
-    private $codeparent="";
+    private $codeparent ;
 
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
-    private $codedirect="";
+    private $codedirect ;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer" ,nullable=true)
      */
     private $paqueid=0;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime" ,nullable=true)
      */
     private $datecreation;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime" ,nullable=true)
      */
     private $dateaffectation;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean" ,nullable=true)
      */
-    private $affectation=false;
+    private $affectation ;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
     private $codegauche="";
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string" ,nullable=true)
      */
     private $codedroite="";
 
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean" ,nullable=true)
      */
-    private $active=false;
+    private $active ;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer" ,nullable=true)
      */
     private $nbrepartenairegauche=0;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer" ,nullable=true)
      */
-    private $nbrepartenairedroite=0;
+    private $nbrepartenairedroite ;
 
 
     /**
