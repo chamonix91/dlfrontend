@@ -63,6 +63,10 @@
         <!-- Bootstrap core CSS -->
         <link href="{{ asset ('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
+        <link rel="icon" type="image/png" href="{{ asset ('favicon.ico') }}"/>
+
+
+
         <!-- Custom fonts for this template -->
         <link href="{{ asset ('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
@@ -131,13 +135,14 @@
                     {% if app.user %}
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ path('dashboard') }}">Mon compte
-                            </a>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_logout') }}">déconnexion</a>
+                        <a class="nav-link js-scroll-trigger"
+                           href="{{ path('fos_user_security_logout') }}">déconnexion</a>
                     </li>
                     <li class="nav-item">
-                    {% else %}
+                        {% else %}
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Connexion
                             IR</a>
@@ -311,67 +316,92 @@
 
         <div class="container-fluid products">
             <div class="row popup-gallery">
+                <script>
+                    function callmodal(indice) {
+                        // Get the modal
+                        console.log('0')
+                        var modal = document.getElementById(indice);
+                        // Get the button that opens the modal
+                        var btn = document.getElementById(indice);
+                        // Get the <span> element that closes the modal
+                        var span = document.getElementsByClassName("close")[0];
+                        // When the user clicks the button, open the modal
+                        btn.onclick = function () {
+                            modal.style.display = "block";
+                        }
+                        console.log('4')
+                        // When the user clicks on <span> (x), close the modal
+                        span.onclick = function () {
+                            modal.style.display = "none";
+                        }
+
+                        // When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function (event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+
+                    }
+
+                </script>
+
+
                 {% for i in products %}
 
-                <div class="col-lg-4 col-sm-6">
-                    <a class="product-box sr-button" href="#">
-                        <div style="background-image: url('{{ asset ('img/product/thumbnails/1.png') }}')"
-                             class="product-img"></div>
-                        <div class="product-box-caption">
-                            <div class="product-box-caption-content">
-                                <img src="{{ asset ('img/eye.png') }}" class="eye-icon" alt="eye-icon" onclick="callmodal({{ i.id }}1,{{ i.id }})" id={{ i.id }}>
+
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="product-box sr-button" >
+                            <div style="background-image: url('{{ asset ('img/product/thumbnails/1.png') }}')"
+                                 class="product-img"></div>
+                            <div class="product-box-caption">
+                                <div class="product-box-caption-content">
+                                    <div class="container">
+                                    <img src="{{ asset ('img/eye.png') }}" class="eye-icon" alt="eye-icon"
+                                         id="{{ i.id }}" data-toggle="modal" data-target="#mymodal{{i.id}}" >
+                                        <button class="btn" hidden></button>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </a>
-                </div>
 
-                <!-- The Modal -->
-                <div id="{{ i.id }}1" class="modal">
-
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <p>{{ i.id }}</p>
                     </div>
 
-                </div>
+
+                    <!-- The Modal -->
+                    <div id="mymodal{{ i.id }}" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div class="row">
+
+                                <div class="col-md-2"></div>
+
+
+                                <div class="col-md-4">
+                                    <img style="max-width:75%; position:relative;" class="border-bottom" src="{{ asset('img/product/thumbnails/1.png') }}">
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-4">{{ i.libelle }}</div>
+                                    <div class="col-md-4">{{ i.shortdescription }}</div>
+                                    <div class="col-md-4">{{ i.prix }}</div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
 
                     <!-- script model  -->
 
-<script>
-                   // callmodal({{ i.id }}1,{{ i.id }});
-</script>
 
                 {% endfor %}
-                <script>
-        function callmodal(id,id1) {
-            // Get the modal
-            var modal = document.getElementById(id);
 
-            // Get the button that opens the modal
-            var btn = document.getElementById(id1);
-
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
-            // When the user clicks the button, open the modal
-            btn.onclick = function () {
-                modal.style.display = "block";
-            }
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        }
-                </script>
 
             </div>
         </div>
