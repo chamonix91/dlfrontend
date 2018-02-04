@@ -44,5 +44,42 @@ class AffichageController extends Controller
             ;
     }
 
+    public function listchallengeAction()
+    {
+        $em=$this->getDoctrine()->getManager();
+        $challenge =$em->getRepository('DLFrontendBundle:Challenge')->findAll();
+
+
+
+
+        for($c=0;$c<count($products);$c++){
+            array_push($imgs,stream_get_contents($products[$c]->getImage1()));
+        }
+        return $this->render('DLFrontendBundle:Front:inedx.html.twig',array('products'=>$products,'imgs'=>$imgs));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

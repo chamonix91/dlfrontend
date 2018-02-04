@@ -13,3 +13,7 @@ register1:
 successadd:
     path:     /successadd
     defaults: { _controller: DLUserBundle:User:successadd }
+
+mescommandes:
+    path:     /mescommandes
+    defaults: { _controller: DLUserBundle:commande:mescommandes }

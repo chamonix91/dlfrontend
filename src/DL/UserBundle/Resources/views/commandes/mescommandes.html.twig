@@ -1,0 +1,53 @@
+
+
+{% extends '@DLUser/Profile/show.html.twig' %}
+
+{% block container %}
+
+
+    <div class="profile-content">
+    <p style="text-align: right; color: #e07e27;">Dernière connexion: {{ app.user.lastLogin|date('d-m-Y H:i:s') }}</p>
+    <br><br><br><br><br><br>
+
+<table class="table table-hover" >
+    <thead>
+    <tr>
+        <th></th>
+        <th>Nom Produit</th>
+        <th>Quantité</th>
+        <th>prix</th>
+        <th>Etat</th>
+
+    </tr>
+    </thead>
+    <tbody align="center">
+    {% for i in panier %}
+        {% for j in produit %}
+
+    <tr>
+        {% if i.idproduit ==  j.id %}
+        <th><a href="{{ path('detailProduct', {'id':  j.id }) }}">Voir produit</a> </th>
+        <td>{{ j.libelle }}</td>
+        <td>{{ j.quantite }}</td>
+        <td>{{ j.prix }}</td>
+
+        {% if  i.etat  == true %}
+        <td>passée</td>
+            {% else %}
+                <td>pas encore</td>
+        {% endif %}
+        {% endif %}
+
+    </tr>
+    {% endfor %}
+    {% endfor %}
+    </tbody>
+</table>
+{% if is_granted('ROLE_NETWORKER') %}
+<a href="{{ path('facturationNetworker', {'id': app.user.id}) }}">confirmer mes achats</a>
+{% else %}
+<a href="{{ path('facturationClient', {'id': app.user.id}) }}">confirmer mes achats</a>
+{% endif %}
+<a href="{{ path('allProducts') }}">continuer le shop</a>
+
+{% endblock container %}

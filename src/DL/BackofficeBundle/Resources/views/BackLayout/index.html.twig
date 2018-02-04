@@ -37,7 +37,7 @@
                                     <p>En cas de besoin vous pouvez changer votre mot de passe en deux cliques. <br><br><br>
                                     </p>
                                     <div>
-                                        <a class="continue" href="{{ path('fos_user_resetting_request') }}"> Changer mot de
+                                        <a class="continue" href="{{ path('fos_user_change_password') }}"> Changer mot de
                                             passe </a>
                                     </div>
                                 </div>
@@ -94,10 +94,10 @@
                                             {% if is_granted('ROLE_ADMIN') %}
                                                 {% if  (app.user.ribDocument == NULL and app.user.cinDocument == NULL ) %}
                                                     <a class="continue" href="{{ path('register1',  { 'id': app.user.id }) }}"
-                                                       target="_blank">Ajouter vos documents </a>
+                                                       ">Ajouter vos documents </a>
                                                     {% else %}
-                                                <a class="continue" href="{{ path('fos_user_registration_register') }}"
-                                                   target="_blank">Voir mes commandes </a>
+                                                <a class="continue" href="{{ path('mescommandes') }}"
+                                                   >Voir mes commandes </a>
                                                     {% endif %}
                                             {% else %}
                                                 <a class="continue" href="{{ path('erreuradduser') }}"

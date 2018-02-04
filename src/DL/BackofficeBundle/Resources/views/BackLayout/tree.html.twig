@@ -1,10 +1,11 @@
-<html lang="en">
-<head>
+{% extends '@DLUser/Profile/show.html.twig' %}
+
+{% block headtree %}
     <meta charset="utf-8">
     <title>Organization Chart Plugin</title>
-    <link rel="stylesheet" href="css/{{ asset('tree/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="css/{{ asset('tree/css/jquery.orgchart.min.css') }}">
-    <link rel="stylesheet" href="css/{{ asset('tree/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('tree/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('tree/css/jquery.orgchart.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('tree/css/style.css') }}">
     <style type="text/css">
         .orgchart { background: #fff; }
         .orgchart td.left, .orgchart td.right, .orgchart td.top { border-color: #aaa; }
@@ -20,50 +21,33 @@
         .orgchart .frontend1 .title { background-color: #cc0066; }
         .orgchart .frontend1 .content { border-color: #cc0066; }
     </style>
-</head>
-<body>
+{% endblock headtree %}
+
+{% block container %}
 <div id="chart-container"></div>
 
-<script type="text/javascript" src="js/{{ asset('tree/js/jquery.min.js') }}"></script>
-<script type="text/javascript" src="js/{{ asset('tree/js/jquery.orgchart.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('tree/js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('tree/js/jquery.orgchart.min.js') }}"></script>
 <script type="text/javascript">
-    $(function() {
+    (function() {
+        var flickerAPI = "http://46.105.31.54/tree/9010";
+        console.log(flickerAPI)
+        $.getJSON( flickerAPI, {
+            tags: "mount rainier",
+            tagmode: "any",
+            format: "json"
+        })
+            .done(function( data ) {
 
-        var datascource = {
-            'name': '5',
-            'title': 'upline 1',
-            'children': [
-                { 'name': '2', 'title': 'upline 2', 'className': 'middle-level',
-                    'children': [
-                        { 'name': '3', 'title': 'upline 3', 'className': 'product-dept' },
-                        { 'name': '4', 'title': 'upline 4', 'className': 'product-dept',
-                            'children': [
-                                { 'name': '5', 'title': 'upline 5', 'className': 'pipeline1' },
-                                { 'name': '6', 'title': 'upline 6', 'className': 'pipeline1' }
-                            ]
-                        }
-                    ]
-                },
-                { 'name': '7', 'title': 'upline 7', 'className': 'middle-level',
-                    'children': [
-                        { 'name': '8', 'title': 'upline 8', 'className': 'rd-dept' },
-                        { 'name': '9', 'title': 'upline 9', 'className': 'rd-dept',
-                            'children': [
-                                { 'name': '10', 'title': 'upline 11', 'className': 'frontend1' },
-                                { 'name': '11', 'title': 'upline 12', 'className': 'frontend1' }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        };
+                $.each( data, function( i, item ) {
+                });
+                $('#chart-container').orgchart({
+                    'data' : data,
+                    'nodeContent': 'title',
 
-        $('#chart-container').orgchart({
-            'data' : datascource,
-            'nodeContent': 'title'
-        });
+                });
+            });
 
-    });
+    })();
 </script>
-</body>
-</html>
+{% endblock container %}

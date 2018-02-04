@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    {% block headtree %}{% endblock headtree %}
     <title>DreamLife | Dashboard </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -83,15 +84,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="header_top">
                         <div class="top_right">
                             <ul>
-                                <li><a href="contact.html">Aide</a></li>
+                                <li><a href="{{ path('contact') }}">Aide</a></li>
                                 |
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{ path('contact') }}">Contact</a></li>
                                 |
-                                <li><a href="checkout.html">Informations sur la livraison</a></li>
+                                <li><a href="#">Informations sur la livraison</a></li>
                             </ul>
                         </div>
                         <div class="top_left">
-                            <h2><span></span> Appelez nous : (+216) 71 518 155</h2>
+                            <h2><span></span> Appelez nous : (+216) 71 256 454</h2>
                         </div>
 
 
@@ -117,17 +118,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="reg">
 
                                 </div>
-                                <div class="cart box_1">
-                                    <a href="#">
-                                        <h3><span class="simpleCart_total">0.00 Dt</span> (<span id="simpleCart_quantity"
-                                                                                               class="simpleCart_quantity">0</span>
-                                            produit)<img src="{{ asset ('Backoffice/images/bag.png') }}" alt=""></h3>
-                                    </a>
-                                    <p><a href="javascript:;" class="simpleCart_empty">(Panier Vide)</a></p>
-                                    <div class="clearfix"></div>
-                                </div>
+
                                 <div class="create_btn">
-                                    <a href="#">CHECKOUT</a>
+                                    <br><br>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -850,18 +843,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="col-md-2 myac">
                             <h4>Mon compte </h4>
-                            <li><a href="{{ path('fos_user_profile_show') }}">Mon arbre</a></li>
-                            <li><a href="checkout.html">Mes commandes</a></li>
-                            <li><a href="details.html">Mes informations</a></li>
+                            <li><a href="{{ path('tree') }}">Mon arbre</a></li>
+                            <li><a href="{{ path('mescommandes') }}">Mes commandes</a></li>
+                            <li><a href="{{ path('fos_user_profile_show') }}">Mes informations</a></li>
                         </div>
                         <div class="col-md-5 our-st">
                             <div class="our-left">
                                 <h4>Nos Coordonnées</h4>
                             </div>
 
-                            <li><i class="add"> </i>15 Rue Ali ibn Abi taleb 2000 Bardo Tunis</li>
-                            <li><i class="phone"> </i>(+216) 71 518 155</li>
-                            <li><a href="mailto:network_dreamlife@dreamlife.com.tn"><i class="mail"> </i>network_dreamlife@dreamlife.com.tn</a></li>
+                            <li><i class="add"> </i>3 ème étage, 39 rue de Paris RP Tunis 1001 Tunis</li>
+                            <li><i class="phone"> </i>(+216) 71 256 454</li>
+                            <li><a href="mailto:dreamlife.doc@gmail.com"><i class="mail"> </i>dreamlife.doc@gmail.com</a></li>
                         </div>
                         <div class="clearfix"></div>
                         <p>© 2018 Dream Life. All Rights Reserved | Created by <a href="http://oramadev.com/">ORAMA</a>
