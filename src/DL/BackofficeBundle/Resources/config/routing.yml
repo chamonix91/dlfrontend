@@ -5,22 +5,30 @@ dashboard:
     defaults: { _controller: DLBackofficeBundle:Main:index }
 
 tree:
-    path:     /tree
+    path:     /dashboard/tree
     defaults: { _controller: DLBackofficeBundle:Main:showtree }
 
 
 event:
-    path:     /blog
+    path:     /dashboard/blog
     defaults: { _controller: DLBackofficeBundle:Main:event }
 
 challenge:
-    path:     /challenges
+    path:     /dashboard/challenges
     defaults: { _controller: DLBackofficeBundle:Main:challenge }
 
 erreuradduser:
-    path:     /erreuradd
+    path:     /dashboard/erreuradd
     defaults: { _controller: DLBackofficeBundle:Main:erreuradduser }
 
 erreurarbre:
-    path:     /erreurarbre
+    path:     /dashboard/erreurarbre
     defaults: { _controller: DLBackofficeBundle:Main:erreurarbre }
+
+mespartenaires:
+    path:     /dashboard/mespartenairesG
+    defaults: { _controller: DLBackofficeBundle:MesPartenaires:afficherpartenairesG }
+
+mespartenaires2:
+    path:     /dashboard/mespartenairesD
+    defaults: { _controller: DLBackofficeBundle:MesPartenaires:afficherpartenairesD }

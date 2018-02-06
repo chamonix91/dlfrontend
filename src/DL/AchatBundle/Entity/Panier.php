@@ -12,10 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="commande")
+ * @ORM\Table(name="panier")
  */
 
-class Commande
+class Panier
 {
 
     /**
@@ -25,7 +25,10 @@ class Commande
      */
     private $id;
 
-
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $idproduit;
 
     /**
      * @ORM\Column(type="integer")
@@ -33,21 +36,14 @@ class Commande
     private $idpartenaire;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $date;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $montant;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $etat;
 
-
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
 
     /**
      * Commande constructor.
@@ -76,7 +72,22 @@ class Commande
     {
         $this->id = $id;
     }
-    
+
+    /**
+     * @return mixed
+     */
+    public function getIdproduit()
+    {
+        return $this->idproduit;
+    }
+
+    /**
+     * @param mixed $idproduit
+     */
+    public function setIdproduit($idproduit)
+    {
+        $this->idproduit = $idproduit;
+    }
 
     /**
      * @return mixed
@@ -97,38 +108,6 @@ class Commande
     /**
      * @return mixed
      */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * @param mixed $date
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMontant()
-    {
-        return $this->montant;
-    }
-
-    /**
-     * @param mixed $montant
-     */
-    public function setMontant($montant)
-    {
-        $this->montant = $montant;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getEtat()
     {
         return $this->etat;
@@ -143,6 +122,22 @@ class Commande
     }
 
 
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
 
 
 

@@ -13,10 +13,10 @@
     <thead>
     <tr>
         <th></th>
-        <th>Nom Produit</th>
-        <th>Quantité</th>
-        <th>prix</th>
-        <th>Etat</th>
+        <th><center>Nom Produit</center></th>
+        <th><center>Quantité</center></th>
+        <th><center>prix</center></th>
+        <th><center>Etat</center></th>
 
     </tr>
     </thead>
@@ -32,9 +32,12 @@
         <td>{{ j.prix }}</td>
 
         {% if  i.etat  == true %}
-        <td>passée</td>
+        <td><span class="badge badge-success" style="background-color: green">Passée</span>
+        </td>
             {% else %}
-                <td>pas encore</td>
+                <td><span class="badge badge-pill badge-danger" style="background-color: red">A confirmer</span>
+                    <a href="{{ path('panier_delete', {'id': i.id}) }}">supprimer</a>
+                    </td>
         {% endif %}
         {% endif %}
 
@@ -43,11 +46,15 @@
     {% endfor %}
     </tbody>
 </table>
+    <center><table>
+        <tr>
 {% if is_granted('ROLE_NETWORKER') %}
-<a href="{{ path('facturationNetworker', {'id': app.user.id}) }}">confirmer mes achats</a>
+    <td><div class="item_add"><span class="item_price"><a href="{{ path('facturationNetworker', {'id': app.user.id}) }}">confirmer mes achats</a></span></div></td>
 {% else %}
-<a href="{{ path('facturationClient', {'id': app.user.id}) }}">confirmer mes achats</a>
+    <td><div class="item_add"><span class="item_price"><a href="{{ path('facturationClient', {'id': app.user.id}) }}">confirmer mes achats</a></span></div></td>
 {% endif %}
-<a href="{{ path('allProducts') }}">continuer le shop</a>
-
+            <td><div class="item_add"><span class="item_price"><a href="{{ path('allProducts') }}">continuer le shop</a></span></div></td>
+        </tr>
+    </table>
+    </center>
 {% endblock container %}

@@ -6,12 +6,10 @@
     <p style="text-align: right; color: #e07e27;">Dernière connexion: {{ app.user.lastLogin|date('d-m-Y H:i:s') }}</p>
     <br><br><br><br><br><br>
 
-            <table class="table table-hover">
+            <table class="table table-hover" >
                 <thead>
                 <tr>
-                    <th>
-                        <center>#</center>
-                    </th>
+                    <th>#</th>
                     <th>
                         <center>Nom</center>
                     </th>
@@ -22,11 +20,10 @@
                         <center>Email</center>
                     </th>
 
-
                 </tr>
                 </thead>
                 <tbody align="center">
-                {% for i in flchield %}
+                {% for i in frchield %}
                     <tr>
                         <th></th>
                         <td>{{ i.nom }}</td>
@@ -41,9 +38,13 @@
             </table>
 
 
-    </div>
 
 
+
+
+
+
+</div>
 
 
 {% endblock container %}

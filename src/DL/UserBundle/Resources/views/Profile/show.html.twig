@@ -152,12 +152,18 @@
                                         Général </a>
                                 </li>
                                 {% block partenaire %}<li>{% endblock partenaire %}
-                                    <a href="#">
+                                    <a href="{{ path('mespartenaires') }}">
                                         <i class="glyphicon glyphicon-user"></i>
-                                        Mes partenaire </a>
+                                        Mes partenaire gauche</a>
+                                </li>
+                                </li>
+                                <li>
+                                    <a href="{{ path('mespartenaires2') }}">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        Mes partenaire droite</a>
                                 </li>
                                 {% block mycommande %}<li>{% endblock mycommande %}
-                                    <a href="{{ path('mescommandes') }}" target="_blank">
+                                    <a href="{{ path('mescommandes') }}" >
                                         <i class="glyphicon glyphicon-ok"></i>
                                         Mes commandes </a>
                                 </li>

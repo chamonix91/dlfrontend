@@ -15,13 +15,13 @@
     <h1>Commande </h1>
     <div id="company" class="clearfix">
         <div>Dream Life</div>
-        <div>15 Rue Ali ibn Abi taleb ,<br />2000 Bardo, Tunis</div>
-        <div>(+216) 71 518 155</div>
-        <div><a href="#">network_dreamlife@dreamlife.com.tn</a></div>
+        <div>3eme étage, 39 rue de Paris RP Tunis   ,<br />1001 Tunis</div>
+        <div>(+216) 71 256 454</div>
+        <div><a href="#">dreamlife.doc@gmail.com</a></div>
     </div>
     <div id="project">
 
-        <div><span>CLIENT</span> {{ app.user.prenom }}{{ app.user.nom }}</div>
+        <div><span>CLIENT</span> {{ app.user.prenom }} {{ app.user.nom }}</div>
         <div><span>ADDRESS</span> {{ app.user.adresse }}, {{ app.user.ville }}, {{ app.user.pays }}</div>
         <div><span>EMAIL</span> <a href="#">{{ app.user.email }}</a></div>
         <div><span>DATE</span>{{ "now"|date("d/m/Y") }}</div>
@@ -40,28 +40,33 @@
         </tr>
         </thead>
         <tbody>
-        {% set tva = produit.prix * 0.19 %}
-        {% set ttc = produit.prix + ( produit.prix * 0.19 ) %}
+
+
+        {% set tva = commande.montant * 0.19 %}
+        {% set ttc = commande.montant + ( commande.montant * 0.19 ) %}
+        {% for i in produits %}
         <tr>
-            <td class="service">{{ produit.libelle }}</td>
-            <td class="desc">{{ produit.description }} </td>
-            <td class="unit">{{ produit.prix }} Dt</td>
+            <td class="service">{{ i.libelle }}</td>
+            <td class="desc">{{ i.shortdescription }} </td>
+            <td class="unit">{{ i.prix }} Dt</td>
             <td class="qty">1</td>
-            <td class="total">{{ produit.prix }} Dt</td>
+            <td class="total">{{ i.prix }} Dt</td>
         </tr>
+        {% endfor %}
 
         <tr>
             <td colspan="4">Sous Total</td>
-            <td class="total">{{ produit.prix }} Dt</td>
+            <td class="total">{{ commande.montant }} Dt</td>
         </tr>
         <tr>
             <td colspan="4">TVA 19%</td>
             <td class="total"> {{ tva }}  </td>
         </tr>
         <tr>
-            <td colspan="4" class="grand total"> TOTAL</td>
+            <td colspan="4" class="grand total"> TOTAL A payer</td>
             <td class="grand total">{{ ttc }}</td>
         </tr>
+
         </tbody>
 
 

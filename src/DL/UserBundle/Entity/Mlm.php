@@ -60,7 +60,7 @@ class Mlm
     /**
      * @ORM\Column(type="boolean" ,nullable=true)
      */
-    private $affectation ;
+    private $affectation = false;
 
     /**
      * @ORM\Column(type="string" ,nullable=true)

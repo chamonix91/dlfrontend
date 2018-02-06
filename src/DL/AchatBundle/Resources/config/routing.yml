@@ -1,43 +1,54 @@
 
 
 allProducts:
-    path:     /allProducts
+    path:     /dashboard/allProducts
     defaults: { _controller: DLAchatBundle:Produit:listProducts }
 
 detailProduct:
-    path:     /{id}/detailProduct
+    path:     /dashboard/{id}/detailProduct
     defaults: { _controller: DLAchatBundle:Produit:detailProduct }
 
 ajouterPanier:
-    path:     /ajouterPanier
+    path:     /dashboard/ajouterPanier
     defaults: { _controller: DLAchatBundle:Panier:ajouter }
 
 supprimerPanier:
-    path:     /supprimerPanier
+    path:     /dashboard/supprimerPanier
     defaults: { _controller: DLAchatBundle:Panier:supprimer }
 
 panier:
-    path:  /panier
+    path:  /dashboard/panier
     defaults: { _controller: DLAchatBundle:Panier:panier }
 
 commande:
-    path:  /{id}/commande
+    path:  /dashboard/{id}/commande
     defaults: { _controller: DLAchatBundle:Commande:addcommande }
 
 achat:
-    path:  /{id}/achat
+    path:  /dashboard/{id}/achat
     defaults: { _controller: DLAchatBundle:Achat:addachat }
 
 facture:
-    path:  /{id}/facture
+    path:  /dashboard/{id}/facture
     defaults: { _controller: DLAchatBundle:Main:facture}
 
-facturation:
-    path:  /{id}/facturation
-    defaults: { _controller: DLAchatBundle:Commande:facture}
+facturationNetworker:
+    path:  /dashboard/{id}/factureNetworker
+    defaults: { _controller: DLAchatBundle:Commande:factureNetworker}
+
+facturationClient:
+    path:  /dashboard/{id}/factureClient
+    defaults: { _controller: DLAchatBundle:Achat:factureClient}
 
 listproduitaccueil:
     path:  /
     defaults: { _controller: DLFrontendBundle:Affichage:listProducts}
 
+commandeadded:
+    path:  /dashboard/commandepassee
+    defaults: { _controller: DLAchatBundle:Commande:commandeadded}
 
+
+panier_delete:
+    path:     /dashboard/{id}/delete
+    defaults: { _controller: DLAchatBundle:Commande:deletePanier }

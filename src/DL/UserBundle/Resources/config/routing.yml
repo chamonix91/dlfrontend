@@ -15,5 +15,5 @@ successadd:
     defaults: { _controller: DLUserBundle:User:successadd }
 
 mescommandes:
-    path:     /mescommandes
+    path:     /dashboard/mescommandes
     defaults: { _controller: DLUserBundle:commande:mescommandes }

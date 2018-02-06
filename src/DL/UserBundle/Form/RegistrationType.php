@@ -50,6 +50,8 @@ class RegistrationType extends AbstractType
             ->add('civilite',ChoiceType::class, array('choices'=>array('M'=>'gender.male','Mme'=>'gender.female'),
                 'label' => 'Civilité'),array('required' => true))
             ->add('tel')
+            ->add('cin')
+            ->add('rib')
 
 
 

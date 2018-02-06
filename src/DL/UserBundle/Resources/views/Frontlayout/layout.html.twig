@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_logout') }}">déconnexion</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
                     </li>
                     <li class="nav-item">
                         {% else %}
@@ -73,9 +73,7 @@
                         <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">Connexion
                             IR</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ path('inscription') }}">Inscription</a>
-                    </li>
+
                     <li class="nav-item">
                         {% endif %}
                         {% if app.user %}
@@ -84,7 +82,7 @@
                             {% else %}
                             <a class="nav-link js-scroll-trigger" href="{{ path('fos_user_security_login') }}">
                                 {% endif %}
-                                Acheter</a>
+                                Achat</a>
 
                     </li>
                 </ul>
