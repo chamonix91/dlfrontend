@@ -65,12 +65,12 @@ class Mlm
     /**
      * @ORM\Column(type="string" ,nullable=true)
      */
-    private $codegauche="";
+    private $codegauche;
 
     /**
      * @ORM\Column(type="string" ,nullable=true)
      */
-    private $codedroite="";
+    private $codedroite;
 
 
     /**

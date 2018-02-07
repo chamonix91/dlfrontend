@@ -66,7 +66,7 @@
                                         <div class="col-md-4"></div>
                                         <div class="col-md-4">
                                             {% if is_granted('ROLE_ADMIN') %}
-                                            <a class="continue" href="{{ path('tree') }}"
+                                            <a class="continue" href="{{ path('tree', {'id': app.user.id}) }}"
                                                >Voir mon arbre</a>
                                             {% else %}
                                             <a class="continue" href="{{ path('erreurarbre') }}"

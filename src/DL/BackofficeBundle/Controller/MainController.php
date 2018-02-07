@@ -2,7 +2,9 @@
 
 namespace DL\BackofficeBundle\Controller;
 
+use DL\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class MainController extends Controller
 {
@@ -11,9 +13,13 @@ class MainController extends Controller
         return $this->render('DLBackofficeBundle:BackLayout:index.html.twig');
     }
 
-    public function showtreeAction()
+    public function showtreeAction(Request $request, $id)
     {
-        return $this->render('DLBackofficeBundle:BackLayout:tree.html.twig');
+
+        $user = $this->getUser();
+        $id = $user->getId();
+
+        return $this->render('DLBackofficeBundle:BackLayout:tree.html.twig', array('id'=>$id));
     }
 
     public function challengeAction()

@@ -843,7 +843,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="col-md-2 myac">
                             <h4>Mon compte </h4>
-                            <li><a href="{{ path('tree') }}">Mon arbre</a></li>
+                            <li><a href="{{ path('tree', {'id': app.user.id}) }}">Mon arbre</a></li>
                             <li><a href="{{ path('mescommandes') }}">Mes commandes</a></li>
                             <li><a href="{{ path('fos_user_profile_show') }}">Mes informations</a></li>
                         </div>

@@ -28,7 +28,7 @@
         {% if i.idproduit ==  j.id %}
         <th><a href="{{ path('detailProduct', {'id':  j.id }) }}">Voir produit</a> </th>
         <td>{{ j.libelle }}</td>
-        <td>{{ j.quantite }}</td>
+        <td>1</td>
         <td>{{ j.prix }}</td>
 
         {% if  i.etat  == true %}

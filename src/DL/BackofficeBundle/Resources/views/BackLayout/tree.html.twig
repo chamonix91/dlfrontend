@@ -30,7 +30,7 @@
 <script type="text/javascript" src="{{ asset('tree/js/jquery.orgchart.min.js') }}"></script>
 <script type="text/javascript">
     (function() {
-        var flickerAPI = "http://46.105.31.54/tree/9010";
+        var flickerAPI = "http://46.105.31.54/tree/"+{{  app.request.get('id') }};
         console.log(flickerAPI)
         $.getJSON( flickerAPI, {
             tags: "mount rainier",

@@ -193,7 +193,7 @@ class MesPartenairesController extends Controller
             ->findAll();
         $perso = $this->get('doctrine.orm.entity_manager')
             ->getRepository('DLUserBundle:Mlm')
-            ->findOneByidpartenaire($id);
+            ->findOneBy(array('idpartenaire'=>$id));
         $test = false;
         if (!empty($this->getleftpartner($perso->getcodegauche())) &&
             $this->getrightpartner($perso->getcodedroite())) {
@@ -358,7 +358,7 @@ class MesPartenairesController extends Controller
     {
         $user = $this->get('doctrine.orm.entity_manager')
             ->getRepository('DLUserBundle:User')
-            ->findOneBycode($code);
+            ->findOneBy(array('code'=>$code));
         if ($user) {
             $mlm = $this->get('doctrine.orm.entity_manager')
                 ->getRepository('DLUserBundle:Mlm')
