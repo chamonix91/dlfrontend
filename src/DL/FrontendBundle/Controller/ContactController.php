@@ -58,8 +58,8 @@ class ContactController extends Controller
             $message = \Swift_Message::newInstance()
 
                 ->setSubject($subject)
-                ->setFrom('dreamlifedev@gmail.com')
-                ->setTo($email)
+                ->setFrom($email)
+                ->setTo('dreamlifedev@gmail.com')
                 ->setBody($this->renderView('DLFrontendBundle:Front:sendemail.html.twig',array('name' => $name)),'text/html');
             $this->get('mailer')->send($message);
 

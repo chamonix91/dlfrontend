@@ -52,3 +52,7 @@ commandeadded:
 panier_delete:
     path:     /dashboard/{id}/delete
     defaults: { _controller: DLAchatBundle:Commande:deletePanier }
+
+facture_finale:
+    path:     /dashboard/{id}/facturefinale
+    defaults: { _controller: DLAchatBundle:Commande:facturefinale }

@@ -63,6 +63,8 @@ class AchatController extends Controller
         $panier=$em->getRepository('DLAchatBundle:Panier')->findby(array('idpartenaire'=>$id));
         $allproducts = $em->getRepository('DLAchatBundle:Panier')->findby(array('etat'=>false));
         $prixtotal = 0 ;
+        $produits = array();
+
 
         foreach ($panier as $p) {
 
@@ -79,7 +81,16 @@ class AchatController extends Controller
                 array_push($produits, $produit );
 
 
-                $prixtotal = $prixtotal + $produit->getPrix();
+                $prix = $produit->getPrix();
+                if ($produit->getRemise()){
+                $remise = 1 - $produit->getRemise()/100;
+                $prixfinal = $prix * $remise;
+                }
+                else{
+
+                    $prixfinal = $produit->getPrix();
+                }
+                $prixtotal = $prixtotal + $prixfinal;
 
 
 
@@ -102,7 +113,7 @@ class AchatController extends Controller
 
 
 
-        return $this->render('DLAchatBundle:Commande:Facture.html.twig', array(
+        return $this->render('DLAchatBundle:Commande:FactureClient.html.twig', array(
             'produits'=>$produits,
             'panier' => $panier,
             'achat' => $achat,

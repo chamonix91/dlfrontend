@@ -29,7 +29,15 @@
         <th><a href="{{ path('detailProduct', {'id':  j.id }) }}">Voir produit</a> </th>
         <td>{{ j.libelle }}</td>
         <td>1</td>
-        <td>{{ j.prix }}</td>
+            {% set remise =  j.remise / 100 %}
+            {% set newprice = j.prix * (1 -remise) %}
+          {% if is_granted('ROLE_NETWORKER') %}
+
+        <td>{{j.prix }}</td>
+        {% else %}
+                <td>{{ newprice }}</td>
+                {% endif %}
+
 
         {% if  i.etat  == true %}
         <td><span class="badge badge-success" style="background-color: green">Passée</span>

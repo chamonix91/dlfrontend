@@ -152,13 +152,13 @@
                                         Général </a>
                                 </li>
                                 {% block partenaire %}<li>{% endblock partenaire %}
-                                    <a href="{{ path('mespartenaires') }}">
+                                    <a href="{{ path('mespartenaires', {'id': app.user.id}) }}">
                                         <i class="glyphicon glyphicon-user"></i>
                                         Mes partenaires gauche</a>
                                 </li>
                                 </li>
                                 <li>
-                                    <a href="{{ path('mespartenaires2') }}">
+                                    <a href="{{ path('mespartenaires2', {'id': app.user.id}) }}">
                                         <i class="glyphicon glyphicon-user"></i>
                                         Mes partenaires droite</a>
                                 </li>
@@ -181,7 +181,62 @@
                     {% block container %}
                     <div class="profile-content">
                         <p style="text-align: right; color: #e07e27;">Dernière connexion: {{ app.user.lastLogin|date('d-m-Y H:i:s') }}</p>
-                        <br><br><br><br><br><br><br><br><br>
+                        <br><br>
+
+                        <div class="women_main" style="border-color: orange">
+                        <h2>Mon arbre</h2>
+                        <p>Votre arbre de partenaires sera l'interface qui vous permettera de visualiser vos succès.
+
+
+                        </p><br>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <center><a class="continue" href="{{ path('tree', {'id': app.user.id}) }}"
+                                    >Voir mon arbre</a></center>
+                            {% else %}
+                                <center><a class="continue" href="{{ path('erreurarbre') }}"
+                                    >Voir mon arbre</a></center>
+                            {% endif %}
+                        </div>
+                        <br>
+                        <div class="women_main" style="border-color: orange">
+                            <h2>Mes partenaire gauche</h2>
+                            <p>
+                                Vous pouver trouver ici la liste de tous vos partenaires qui se trouvent dans le côté gauche
+                                de votre arbre
+                            </p><br>
+                            <p>
+                                Dans cette section vous pouvez vérifier si un partenaire choisie possède
+                                un espace libre dans l'un des cotés de son arbre ou non.
+                            </p>
+                            <br>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <center><a class="continue" href="{{ path('mespartenaires', {'id': app.user.id}) }}"
+                                    >Voir mes partenaires gauches</a></center>
+                            {% else %}
+                                <center><a class="continue" href="{{ path('erreurarbre') }}"
+                                    >Voir mes partenaires gauches</a></center>
+                            {% endif %}
+                        </div>
+                        <br>
+                        <div class="women_main" style="border-color: orange">
+                            <h2>Mes partenaire droites</h2>
+                            <p>
+                                Vous pouver trouver ici la liste de tous vos partenaires qui se trouvent dans le côté droit
+                                de votre arbre
+                            </p><br>
+                            <p>
+                                Dans cette section vous pouvez vérifier si un partenaire choisie possède
+                                un espace libre dans l'un des cotés de son arbre ou non.
+                            </p><br>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <center><a class="continue" href="{{ path('mespartenaires2', {'id': app.user.id}) }}"
+                                >Voir mes partenaires droites</a></center>
+                            {% else %}
+                                <center><a class="continue" href="{{ path('erreurarbre') }}"
+                                >Voir mes partenaires droites</a></center>
+                            {% endif %}
+                        </div>
+
                         {% block fos_user_content %}
                             {% include "@FOSUser/Profile/show_content.html.twig" %}
                         {% endblock fos_user_content %}

@@ -53,17 +53,17 @@ class Produit
     private $libelle;
 
     /**
-     * @ORM\Column(type="blob" ,nullable=true)
+     * @ORM\Column(type="string" ,nullable=true)
      */
     private $image1;
 
     /**
-     * @ORM\Column(type="blob" ,nullable=true)
+     * @ORM\Column(type="string" ,nullable=true)
      */
     private $image2;
 
     /**
-     * @ORM\Column(type="blob" ,nullable=true)
+     * @ORM\Column(type="string" ,nullable=true)
      */
     private $image3;
 
@@ -86,6 +86,13 @@ class Produit
      * @ORM\Column(type="string" ,nullable=true)
      */
     private $souscategorie;
+
+    /**
+     * @ORM\Column(type="integer" ,nullable=true)
+     */
+    private $remise;
+
+
 
     /**
      * @return mixed
@@ -300,6 +307,24 @@ class Produit
     {
         $this->description = $description;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRemise()
+    {
+        return $this->remise;
+    }
+
+    /**
+     * @param mixed $remise
+     */
+    public function setRemise($remise)
+    {
+        $this->remise = $remise;
+    }
+
+
 
 
 

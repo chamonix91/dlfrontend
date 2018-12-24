@@ -28,30 +28,46 @@
                         <div class="flex-viewport" style="overflow: hidden; position: relative;"><ul class="slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-864px, 0px, 0px);"><li data-thumb="{{ image1 }}" class="clone" aria-hidden="true" style="width: 288px; float: left; display: block;">
                                     <div class="thumb-image"> <img src="{{ image1 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
-                                <li data-thumb="{{ img2 }}" class="" style="width: 288px; float: left; display: block;">
-                                    <div class="thumb-image"> <img src="{{ img2 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                <li data-thumb="http://54.38.182.154/upload/{{ produit.image1 }}" class="" style="width: 288px; float: left; display: block;">
+                                    <div class="thumb-image"> <img src="http://54.38.182.154/upload/{{ produit.image1 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
-                                <li data-thumb="{{ image3 }}" style="width: 288px; float: left; display: block;" class="">
-                                    <div class="thumb-image"> <img src="{{ image3 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                <li data-thumb="http://54.38.182.154/upload/{{ produit.image2 }}" style="width: 288px; float: left; display: block;" class="">
+                                    <div class="thumb-image"> <img src="http://54.38.182.154/upload/{{ produit.image2 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
-                                <li data-thumb="{{ image1 }}" style="width: 288px; float: left; display: block;" class="flex-active-slide">
-                                    <div class="thumb-image"> <img src="{{ image1 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+                                <li data-thumb="http://54.38.182.154/upload/{{ produit.image2 }}" style="width: 288px; float: left; display: block;" class="flex-active-slide">
+                                    <div class="thumb-image"> <img src="http://54.38.182.154/upload/{{ produit.image2 }}" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
                                 </li>
 
                             </ul></div><ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li><li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li></ul></div>
                 </div>
+                {% set remise =  produit.remise / 100 %}
+                {% set newprice = produit.prix * (1 -remise) %}
+
                 <div class="desc1 span_3_of_2">
                     <h3>{{ produit.libelle }}</h3>
                     {#<span class="brand">Brand: <a href="#">Sed do eiusmod </a></span>#}
                     <br>
                     <span class="code">Code Produit: {{ produit.codeProduit }}</span>
                     <p>{{ produit.shortdescription }}</p>
-                    <div class="price">
-                        <span class="text">Price:</span>
-                        <span class="price-new">{{ produit.prix }} Dt</span><span class="price-old">$100.00</span>
-                        <span class="price-tax"></span><br>
-                        <span class="points"><small>Price in reward points: 400</small></span><br>
-                    </div>
+                    {% if is_granted('ROLE_NETWORKER') and produit.remise %}
+                        <div class="price">
+                            <span class="text">Price:</span>
+                            <span class="price-new">{{ produit.prix }} Dt</span><br>
+                            <span class="price-tax"></span><br>
+                        </div>
+                    {% else %}
+
+
+                        <div class="price">
+                            <span class="text">Price:</span>
+                            <span class="price-new">{{ newprice }} Dt</span><br>
+                            {% if produit.remise %}
+                            <span class="price-old">{{ produit.prix }} Dt</span>
+                            <span class="price-tax">Remise : {{ produit.remise }}%</span>
+                            {% endif %}
+                            <span class="price-tax"></span><br>
+                        </div>
+                    {% endif %}
 
                     <div class="btn_form">
                         {% if is_granted('ROLE_NETWORKER') %}

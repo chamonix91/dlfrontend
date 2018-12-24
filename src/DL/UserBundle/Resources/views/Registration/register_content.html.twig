@@ -10,15 +10,73 @@
         <center><h2>Informations Personnelles</h2></center>
         {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
-        {{ form_widget(form) }}
-        <input type="checkbox" required>Accepter les conditions Dream Life* <a href="{{ 'media/uploads/pdf/'}}">Voir les conditions</a>
+
+
+
+        {{ form_row(form.email.first) }}
+        {{ form_row(form.email.second) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.plainPassword.first) }}
+        {{ form_row(form.plainPassword.second) }}
+        {{ form_row(form.emailenrolleur) }}
+        {{ form_row(form.emaildirect) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.datedenaissance) }}
+        {{ form_row(form.pays) }}
+        {{ form_row(form.adresse) }}
+        {{ form_row(form.civilite) }}
+        {{ form_row(form.tel) }}
+        {{ form_row(form.pack) }}
+
+        {{ form_row(form.ribDocument) }}
+        {{ form_row(form.cinDocument) }}
+
+        <input type="radio" name="tab" value="igotnone" onclick="show1();" />
+        Paiement par transaction bancaire
+        <input type="radio" name="tab" value="igottwo" onclick="show2();" />
+        Paiement Par chèque  </br></br>
+        <div id="div1" class="hide">
+            {{ form_row(form.cin) }}
+            {{ form_row(form.rib) }}
+        </div>
+
+        <div id="div2" class="hide">
+           <p> Vous pouvez déposer directement votre chèque dans le siège de dream life </p>
+        </div>
+
+
+
+        <input type="checkbox" required>Accepter les conditions Dream Life* <a href="#">Voir les conditions</a>
 
         <div>
             <input type="submit" value="{{ 'registration.submit'|trans }}" />
         </div>
         {{ form_end(form) }}
+
     </div>
     <br>
 
     <div class="col-sm-3"></div>
 </div>
+
+<script>
+
+    function show1(){
+        document.getElementById('div1').style.display ='block';
+        document.getElementById('div2').style.display ='none';
+
+    }
+    function show2(){
+        document.getElementById('div1').style.display = 'none';
+        document.getElementById('div2').style.display = 'block';
+    }
+
+</script>
+
+<style>
+
+    .hide {
+        display: none;
+    }
+</style>

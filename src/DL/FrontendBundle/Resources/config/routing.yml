@@ -14,3 +14,6 @@ detailproduit:
     path:     /detail
     defaults: { _controller: DLFrontendBundle:Main:detailproduit }
 
+produitsdreamlife:
+    path:     /tousproduits
+    defaults: { _controller: DLFrontendBundle:Main:allproducts }

@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new DL\FrontendBundle\DLFrontendBundle(),
             new DL\BackofficeBundle\DLBackofficeBundle(),
             new DL\AchatBundle\DLAchatBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

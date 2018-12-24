@@ -21,4 +21,19 @@ class ProduitRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function findByStock() {
+
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb->select('r')
+            ->from('DLAchatBundle:Produit', 'r')
+            ->where('r.quantite > :quantite')
+            ->setParameters(array('quantite'=> 1));
+        $query = $qb->getQuery();
+        $produit = $query->getResult();
+        return $produit;
+
+
+    }
+
 }

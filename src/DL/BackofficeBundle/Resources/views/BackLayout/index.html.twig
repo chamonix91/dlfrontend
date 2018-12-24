@@ -3,6 +3,7 @@
 
 {% block content %}
     <div class="women_main">
+        <p style="text-align: right; color: #e07e27;">Dernière connexion: {{ app.user.lastLogin|date('d-m-Y H:i:s') }}</p>
         <div class="tab-main">
             <!--/tabs-inner-->
             <div class="tab-inner">
@@ -13,22 +14,22 @@
                             <ul>
                                 <li class="tab-current"><a href="#section-1"
                                                            class="icon-shop"><span>Mes Informations</span></a></li>
-                                <li><a href="#section-2" class="icon-cup"><span>Mon Arbre</span></a></li>
+                                {#<li><a href="#section-2" class="icon-cup"><span>Mon Arbre</span></a></li>#}
                                 <li><a href="#section-3" class="icon-food"><span>Mes Commandes</span></a></li>
-                                <li><a href="#section-4" class="icon-food"><span>Ajouter Partenaire</span></a></li>
+                                {#<li><a href="#section-4" class="icon-food"><span>Ajouter Partenaire</span></a></li>#}
                             </ul>
                         </nav>
                         <div class="content tab">
                             <section id="section-1" class="content-current">
 
                                 <div class="mediabox">
-                                    <i class="fa fa-user"></i>
-                                    <h3>Voir Profil</h3>
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <h3>Boutique Dreamlife</h3>
                                     <p>Vous pouvez vérifier vos informations personnelles et passer une reclamation à
                                         l'administration
                                         en cas d'erreur lors de l'inscription <br><br></p>
                                     <div>
-                                        <a class="continue" href="{{ path('fos_user_profile_show') }}"> Mon Profil </a>
+                                        <a class="continue" href="{{ path('allProducts') }}"> Shop </a>
                                     </div>
                                 </div>
                                 <div class="mediabox">
@@ -37,7 +38,8 @@
                                     <p>En cas de besoin vous pouvez changer votre mot de passe en deux cliques. <br><br><br>
                                     </p>
                                     <div>
-                                        <a class="continue" href="{{ path('fos_user_change_password') }}"> Changer mot de
+                                        <a class="continue" href="{{ path('fos_user_change_password') }}"> Changer mot
+                                            de
                                             passe </a>
                                     </div>
                                 </div>
@@ -53,8 +55,8 @@
                                     </div>
                                 </div>
                             </section>
-                            <section id="section-2">
-                                <div class="panel panel-primary two">
+                            {#<section id="section-2">
+                                #}{#<div class="panel panel-primary two">
                                     <div class="panel-heading">
                                         <center> Afficher l'arbre de mon organisation</center>
                                     </div>
@@ -77,35 +79,136 @@
                                     </div>
 
 
+
+                                </div>#}{#
+                                <div class="mediabox">
+                                    <i class="fa fa-user"></i>
+                                    <h3>Mes partenaires gauches</h3>
+                                    <p>Vous pouver trouver ici la liste de tous vos partenaires qui se trouvent dans le
+                                        côté gauche de votre arbre <br><br></p>
+                                    <div>
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <a class="continue" href="{{ path('mespartenaires', {'id': app.user.id}) }}"
+                                            >Partenaires gauches</a>
+                                        {% else %}
+                                            <a class="continue" href="{{ path('erreurarbre') }}"
+                                            >Partenaires gauches</a>
+                                        {% endif %}
+                                    </div>
                                 </div>
-                            </section>
+                                <div class="mediabox">
+                                    <i class="fa fa-sitemap"></i>
+                                    <h3>Mon arbre</h3>
+                                    <br>
+
+                                    <p>Votre arbre de partenaires sera l'interface qui
+                                        vous permettera de
+                                        visualiser vos succès. <br><br>
+                                    </p>
+                                    <div>
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <a class="continue" href="{{ path('tree', {'id': app.user.id}) }}"
+                                            >Voir mon arbre</a>
+                                        {% else %}
+                                            <a class="continue" href="{{ path('erreurarbre') }}"
+                                            >Voir mon arbre</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="mediabox">
+                                    <i class="fa fa-user"></i>
+                                    <h3>Mes partenaires droites</h3>
+                                    <p>Vous pouver trouver ici la liste de tous vos partenaires qui se trouvent dans le
+                                        côté droit de votre arbre </p><br>
+                                    <div>
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <a class="continue" href="{{ path('mespartenaires2', {'id': app.user.id}) }}"
+                                            >Partenaires droits</a>
+                                        {% else %}
+                                            <a class="continue" href="{{ path('erreurarbre') }}"
+                                            >Partenaires droits</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                            </section>#}
                             <section id="section-3">
                                 <div class="panel panel-primary two">
                                     <div class="panel-heading">
                                         <center> Afficher toutes mes commandes</center>
                                     </div>
-                                    <div class="panel-body ont two"><p> Vous pouvez vérifier vous-mêmes les commandes de
+                                    {#<div class="panel-body ont two"><p> Vous pouvez vérifier vous-mêmes les commandes de
                                             produits que vous avez déjà
                                             passé.</p></div>
 
                                     <div class="row">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-4">
-                                            {% if is_granted('ROLE_ADMIN') %}
-                                                {% if  (app.user.ribDocument == NULL and app.user.cinDocument == NULL ) %}
-                                                    <a class="continue" href="{{ path('register1',  { 'id': app.user.id }) }}"
-                                                       ">Ajouter vos documents </a>
-                                                    {% else %}
-                                                <a class="continue" href="{{ path('mescommandes') }}"
-                                                   >Voir mes commandes </a>
-                                                    {% endif %}
-                                            {% else %}
-                                                <a class="continue" href="{{ path('erreuradduser') }}"
-                                                   target="_blank"> Voir mes commandes </a>
-                                            {% endif %}
+
+
+                                                    <a class="continue" href="{{ path('mescommandes') }}"
+                                                    >Voir mes commandes </a>
+
                                         </div>
                                         <div class="col-md-4"></div>
-                                    </div>
+                                    </div>#}
+
+                                    <table class="table table-hover" >
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th><center>Nom Produit</center></th>
+                                            <th><center>Quantité</center></th>
+                                            <th><center>prix</center></th>
+                                            <th><center>Etat</center></th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody align="center">
+                                        {% for i in panier %}
+                                            {% for j in produit %}
+
+                                                <tr>
+                                                    {% if i.idproduit ==  j.id %}
+                                                        <th><a href="{{ path('detailProduct', {'id':  j.id }) }}">Voir produit</a> </th>
+                                                        <td>{{ j.libelle }}</td>
+                                                        <td>1</td>
+                                                        {% set remise =  j.remise / 100 %}
+                                                        {% set newprice = j.prix * (1 -remise) %}
+                                                        {% if is_granted('ROLE_NETWORKER') %}
+
+                                                            <td>{{j.prix }}</td>
+                                                        {% else %}
+                                                            <td>{{ newprice }}</td>
+                                                        {% endif %}
+
+
+                                                        {% if  i.etat  == true %}
+                                                            <td><span class="badge badge-success" style="background-color: green">Passée</span>
+                                                            </td>
+                                                        {% else %}
+                                                            <td><span class="badge badge-pill badge-danger" style="background-color: red">A confirmer</span>
+                                                                <a href="{{ path('panier_delete', {'id': i.id}) }}">supprimer</a>
+                                                            </td>
+                                                        {% endif %}
+                                                    {% endif %}
+
+                                                </tr>
+                                            {% endfor %}
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <center><table>
+                                            <tr>
+                                                {% if is_granted('ROLE_NETWORKER') %}
+                                                    <td><div class="item_add"><span class="item_price"><a href="{{ path('facturationNetworker', {'id': app.user.id}) }}">confirmer mes achats</a></span></div></td>
+                                                {% else %}
+                                                    <td><div class="item_add"><span class="item_price"><a href="{{ path('facturationClient', {'id': app.user.id}) }}">confirmer mes achats</a></span></div></td>
+                                                {% endif %}
+                                                <td><div class="item_add"><span class="item_price"><a href="{{ path('allProducts') }}">continuer le shop</a></span></div></td>
+                                            </tr>
+                                        </table>
+                                    </center>
                                 </div>
 
 
@@ -126,11 +229,11 @@
                                         <div class="col-md-4"></div>
                                         <div class="col-md-4">
                                             {% if is_granted('ROLE_ADMIN') %}
-                                            <a class="continue" href="{{ path('fos_user_registration_register') }}"
-                                               target="_blank">Ajouter Partenaire </a>
+                                                <a class="continue" href="{{ path('fos_user_registration_register') }}"
+                                                   target="_blank">Ajouter Partenaire </a>
                                             {% else %}
-                                            <a class="continue" href="{{ path('erreuradduser') }}"
-                                               target="_blank">Ajouter Partenaire </a>
+                                                <a class="continue" href="{{ path('erreuradduser') }}"
+                                                   target="_blank">Ajouter Partenaire </a>
                                             {% endif %}
                                         </div>
                                         <div class="col-md-4"></div>

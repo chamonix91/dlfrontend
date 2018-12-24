@@ -12,18 +12,20 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use DL\UserBundle\Form\MlmType;
 class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-       
+
+
 
         $builder
 
-            ->add('emailenrolleur',EmailType::class, array('label' => 'Email enrolleur'))
-            ->add('emaildirect',EmailType::class, array('label' => 'Email direct'))
+            ->add('emailenrolleur',EmailType::class, array('label' => 'Email upline', 'required' => true))
+            ->add('emaildirect',EmailType::class, array('label' => 'Email parrain', 'required' => true))
             ->add('email', EmailType::class, array('label' => 'Votre email'))
             ->add('email', RepeatedType::class, array(
                 'first_options'  => array('label' => 'Votre Email'),
@@ -42,16 +44,19 @@ class RegistrationType extends AbstractType
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
-            ->add('nom')
-            ->add('prenom')
+            ->add('nom',TextType::class, array('label' => 'Nom', 'required' => true))
+            ->add('prenom',TextType::class, array('label' => 'Prenom', 'required' => true))
             ->add('datedenaissance',BirthdayType::class)
             ->add('pays')
-            ->add('adresse')
+            ->add('adresse',TextType::class, array('label' => 'Adresse', 'required' => true))
             ->add('civilite',ChoiceType::class, array('choices'=>array('M'=>'gender.male','Mme'=>'gender.female'),
                 'label' => 'Civilité'),array('required' => true))
-            ->add('tel')
+            ->add('tel',TextType::class, array('label' => 'Téléphone', 'required' => true))
+            ->add('pack')
             ->add('cin')
             ->add('rib')
+            ->add('ribDocument', FileType::class,  array('data_class' => null,'label' => 'Votre Justificatif de paiement:    '))
+            ->add('cinDocument', FileType::class, array('data_class' => null,'label' => 'Votre CIN  :   '))
 
 
 

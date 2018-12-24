@@ -1,5 +1,8 @@
 {% extends "@DLUser/Frontlayout/layout.html.twig" %}
 
+{% block meta %} <meta http-equiv="refresh" content="60; URL=http://localhost:8181/dlfrontend/web/app_dev.php/{{ app.user.id }}/addFiles"> {% endblock meta %}
+
+
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block pagename %}Bienvenue{% endblock  %}

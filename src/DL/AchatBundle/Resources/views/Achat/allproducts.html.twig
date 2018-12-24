@@ -33,14 +33,28 @@
 
                 <div class="grid1_of_4">
                     <div class="content_box"><a href="{{ path('detailProduct', { 'id': i.id }) }}">
-                            <img src="{{ imgs[k] }}" class="img-responsive" alt="" width="500"  height="500" >
+                            <img src="http://54.38.182.154/upload/{{ i.image1 }}" class="img-responsive" alt="" width="500"  height="500" >
                         </a>
                    {% set k = k+ 1 %}
                         <h4><a href="{{ path('detailProduct', { 'id': i.id }) }}">{{ i.libelle }}</a></h4>
                         <p>{{ i.shortdescription }}</p>
                         <div class="grid_1 simpleCart_shelfItem">
+                            {% set remise =  i.remise / 100 %}
+                            {% set newprice = i.prix * (1 -remise) %}
 
-                            <div class="item_add"><span class="item_price"><h6>{{ i.prix }}</h6></span></div>
+                            {% if is_granted('ROLE_NETWORKER') %}
+                                <div class="item_add"><span class="item_price"><h6>{{ i.prix }} Dt</h6></span></div>
+
+                            {% elseif i.remise != NULL %}
+                                <div class="item_add"><span class="item_price"><h6>{{ newprice }} Dt</h6></span>
+                                    <span class="price-old">{{ i.prix }} Dt</span><br>
+                                    <span class="price-tax">Remise : {{ i.remise }}%</span>
+                                </div>
+                            {% else %}
+                            <div class="item_add"><span class="item_price"><h6>{{ i.prix }} Dt</h6></span></div>
+
+                            {% endif %}
+
                             <div class="item_add"><span class="item_price"><a href="{{ path('detailProduct', {'id': i.id}) }}">Plus d'informations</a></span></div>
                         </div>
                     </div>

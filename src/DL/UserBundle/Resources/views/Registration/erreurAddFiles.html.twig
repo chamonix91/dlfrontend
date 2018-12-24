@@ -1,0 +1,18 @@
+{% extends '@DLBackoffice/BackLayout/Layout.html.twig' %}
+
+{% block content %}
+    <div class="women_main">
+        <div class="tab-main">
+            <div class="alert alert-dismissible alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h4 class="alert-heading">Attention!</h4>
+                <p class="mb-0">Vous avez probablement inséré une mauvaise adresse e-mail de votre enrolleur ou celle de votre
+                    partenaire direct. Pour régler ce soucis, vous pouvez envoyer une réclamation via ce
+                    <a href="{{ path('contact') }}" class="alert-link">lien</a>
+                Vous pouvez également appeler directement ce numéro (+216) 71 256 454</p>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

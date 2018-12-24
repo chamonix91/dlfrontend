@@ -24,15 +24,11 @@ class AffichageController extends Controller
 
     public function listProductsAction()
     {
-        $em=$this->getDoctrine()->getManager();
-        $products=$em->getRepository('DLAchatBundle:Produit')->findAll();
-        $imgs = array();
-        
-        
-        for($c=0;$c<count($products);$c++){
-            array_push($imgs,stream_get_contents($products[$c]->getImage1()));
-        }
-        return $this->render('DLFrontendBundle:Front:inedx.html.twig',array('products'=>$products,'imgs'=>$imgs));
+        $em = $this->getDoctrine()->getManager();
+
+        $produit = $em->getRepository('DLAchatBundle:Produit')->findByStock();
+
+        return $this->render('DLFrontendBundle:Front:inedx.html.twig', array('produits'=>$produit));
     }
 
     private function createDeleteForm(Produit $produit)
@@ -47,15 +43,15 @@ class AffichageController extends Controller
     public function listchallengeAction()
     {
         $em=$this->getDoctrine()->getManager();
-        $challenge =$em->getRepository('DLFrontendBundle:Challenge')->findAll();
+        $challenge =$em->getRepository('DLFrontendBundle:Challenge')->findby(array(),array('id'=>'desc'));
 
 
 
 
-        for($c=0;$c<count($products);$c++){
-            array_push($imgs,stream_get_contents($products[$c]->getImage1()));
+        for($c=0;$c<count($challenge);$c++){
+            array_push($imgs,stream_get_contents($challenge[$c]->getLogo()));
         }
-        return $this->render('DLFrontendBundle:Front:inedx.html.twig',array('products'=>$products,'imgs'=>$imgs));
+        return $this->render('DLFrontendBundle:Front:inedx.html.twig',array('challenges'=>$challenge,'imgs'=>$imgs));
     }
 
 

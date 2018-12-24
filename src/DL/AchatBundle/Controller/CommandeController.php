@@ -65,47 +65,57 @@ class CommandeController extends Controller
 
         $form = $this->createDeleteForm($user);
         $em = $this->getDoctrine()->getManager();
-        $commande = new Commande();
-
         $id = $this->getUser()->getId();
+
+        // ---------- Panier de l'utilisateur --------------
         $panier=$em->getRepository('DLAchatBundle:Panier')->findby(array('idpartenaire'=>$id));
+
+        // ---------- commande de l'utilisateur --------------
+        $commandes = $em->getRepository('DLAchatBundle:Commande')->findBy(array('idpartenaire'=>$id));
+
         $prixtotal = 0 ;
         $produits = array();
 
+        // ----------- transformer l'état dans la table panier + calcul de la somme  ------------//
         foreach ($panier as $p) {
-
             if ($p->getEtat() == false){
-
-
-           // dump($p->getidproduit());die;
-            $panier=$em->getRepository('DLAchatBundle:Panier')->findOneby(array('idpartenaire'=>$id));
-
+                $panier=$em->getRepository('DLAchatBundle:Panier')->findOneby(array('idpartenaire'=>$id));
                 $idproduit = $p->getidproduit();
-
-            $produit = $em->getRepository('DLAchatBundle:Produit')->find(array('id' =>$idproduit));
-
-
-                array_push($produits, $produit );
-
-            $prixtotal = $prixtotal + $produit->getPrix();
-
-            $etat = true;
-            $p->setEtat($etat);
-
-            $em->persist($p);
-            $em->flush();
-
+                $produit = $em->getRepository('DLAchatBundle:Produit')->find(array('id' =>$idproduit));
+                array_push($produits, $produit ); //récupérer les produits du panier
+                $prix = $produit->getPrix();
+                $prixtotal = $prixtotal + $prix;
+                $etat = true;
+                //$p->setEtat($etat);
+                //$em->persist($p);
+                $em->flush();
             }
         }
 
-        $commande->setMontant($prixtotal);
+        $prixfinal = 0;
+        if (count($commandes) >= 1){
+            foreach ($commandes as $c){
+                $prixfinal = $prixfinal + $c->getMontant();
+                $commande = $em->getRepository('DLAchatBundle:Commande')->find(array('id'=>$c->getId()));
+                $em->remove($commande);
+                $em->flush();
+            }
+        }
+        else{
+            $commande = new Commande();
+        }
+
+
+        $prixfinal = $prixfinal + $prixtotal;
+        $commande->setMontant($prixfinal);
         $commande->setIdpartenaire($id);
         $commande->setEtat(false);
-
         $em->persist($commande);
         $em->flush();
 
-
+        if ($commande){
+            return $this->redirectToRoute('facture_finale', array('id' => $user->getId()));
+        }
 
         return $this->render('DLAchatBundle:Commande:Facture.html.twig', array(
             'produits'=>$produits,
@@ -113,6 +123,44 @@ class CommandeController extends Controller
             'commande' => $commande,
             'form' => $form->createView(),
         ));
+    }
+
+    public function facturefinaleAction(User $user){
+
+        $form = $this->createDeleteForm($user);
+        $em = $this->getDoctrine()->getManager();
+        $id = $this->getUser()->getId();
+
+        // ---------- Panier de l'utilisateur --------------
+        $panier=$em->getRepository('DLAchatBundle:Panier')->findby(array('idpartenaire'=>$id));
+        $prixtotal=0;
+        $produits = array();
+
+
+        // ----------- transformer l'état dans la table panier + calcul de la somme  ------------//
+        foreach ($panier as $p) {
+            //dump($panier);die();
+            if ($p->getEtat() == false){
+                $panier=$em->getRepository('DLAchatBundle:Panier')->findOneby(array('idpartenaire'=>$id));
+                $idproduit = $p->getidproduit();
+                $produit = $em->getRepository('DLAchatBundle:Produit')->find(array('id' =>$idproduit));
+                array_push($produits, $produit ); //récupérer les produits du panier
+                $prix = $produit->getPrix();
+                $prixtotal = $prixtotal + $prix;
+                $etat = true;
+                $p->setEtat($etat);
+                $em->persist($p);
+                $em->flush();
+            }
+        }
+
+        return $this->render('DLAchatBundle:Commande:FactureFinale.html.twig',array(
+            'produits'=>$produits,
+            'prixtotal'=>$prixtotal,
+            'panier' => $panier,
+            'form' => $form->createView()
+        ));
+
     }
 
 

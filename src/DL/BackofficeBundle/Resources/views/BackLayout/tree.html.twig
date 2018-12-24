@@ -1,4 +1,4 @@
-{% extends '@DLUser/Profile/show.html.twig' %}
+{% extends 'DLBackofficeBundle:BackLayout:Layout.html.twig' %}
 
 {% block headtree %}
     <meta charset="utf-8">
@@ -23,14 +23,26 @@
     </style>
 {% endblock headtree %}
 
-{% block container %}
+{% block content %}
+
+<div class="women_main">
+    <div>
+        <center><h2>Mon arbre</h2></center> <br><br>
+        <div class="btn_form">
+            <center>
+            <a href="{{ path('mespartenaires', {'id': app.user.id}) }}" > Partenaires gauches </a>
+            <a href="{{ path('mespartenaires2', {'id': app.user.id}) }}" > Partenaires droits </a>
+            </center>
+        </div>
+    </div>
+
 <div id="chart-container"></div>
 
 <script type="text/javascript" src="{{ asset('tree/js/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('tree/js/jquery.orgchart.min.js') }}"></script>
 <script type="text/javascript">
     (function() {
-        var flickerAPI = "http://46.105.31.54/tree/"+{{  app.request.get('id') }};
+        var flickerAPI = "http://54.38.182.154/mytree/"+{{  app.request.get('id') }};
         console.log(flickerAPI)
         $.getJSON( flickerAPI, {
             tags: "mount rainier",
@@ -50,4 +62,5 @@
 
     })();
 </script>
-{% endblock container %}
+</div>
+{% endblock content %}

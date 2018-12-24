@@ -5,15 +5,15 @@ namespace DL\UserBundle\Controller;
 
 use DL\UserBundle\Entity\Mlm;
 use DL\UserBundle\Entity\User;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Serializer\Normalizer\DataUriNormalizer;
 
 
 class RegistrationController extends Controller
 {
 
-    public function editAction(Request $request, User $user)
+    public function editAction(Request $request, User $user,Request $request, $id)
     {
         $mlm = new Mlm();
         $mlm1= new Mlm();
@@ -25,11 +25,25 @@ class RegistrationController extends Controller
         $editForm->handleRequest($request);
 
 
+        $user = $em->getRepository('DLUserBundle:User')->find($id);
 
-        $enrolleur=$em->getRepository('DLUserBundle:User')->findOneBy(array('email'=>$this->getUser()->getemailenrolleur()));
-        $direct = $em->getRepository('DLUserBundle:User')->findOneBy(array('email'=>$this->getUser()->getemaildirect()));
 
-        $utilisateur = $em->getRepository('DLUserBundle:User')->findOneBy(array('id'=>$this->getUser()->getId()));
+        if (!$user->getemailenrolleur() || !$user->getemaildirect()){
+
+            return $this->redirectToRoute('erreurAddfile');
+
+        }
+
+        $enrolleur=$em->getRepository('DLUserBundle:User')->findOneBy(array('email'=>$user->getEmailenrolleur()));
+        $direct = $em->getRepository('DLUserBundle:User')->findOneBy(array('email'=>$user->getEmaildirect()));
+
+        if (!$enrolleur || !$direct)
+        {
+            return $this->redirectToRoute('erreurAddfile');
+        }
+
+
+        $utilisateur = $em->getRepository('DLUserBundle:User')->findOneBy(array('id'=>$user->getId()));
         $code = $utilisateur->getCode();
         //$codeparent = $mlm1->getCodeparent();
 
@@ -62,7 +76,7 @@ class RegistrationController extends Controller
 
 
 
-            $mlm->setIdpartenaire($this->getUser()->getId());
+            $mlm->setIdpartenaire($user->getId());
             $mlm -> setCodeparent($enrolleur->getCode());
             $mlm->setCodedirect($direct->getCode());
 
@@ -98,4 +112,18 @@ class RegistrationController extends Controller
             ->getForm()
             ;
     }
+
+    public function erreurAddFileAction()
+    {
+        // replace this example code with whatever you need
+        return $this->render('@DLUser/Registration/erreurAddFiles.html.twig');
+    }
+
+
+
+
+
+
+
+
 }

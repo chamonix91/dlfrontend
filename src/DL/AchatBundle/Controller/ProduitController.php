@@ -18,22 +18,25 @@ class ProduitController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         $products=$em->getRepository('DLAchatBundle:Produit')->findAll();
-      $imgs = array(); 
-       for($c=0;$c<count($products);$c++){
-       array_push($imgs,stream_get_contents($products[$c]->getImage1()));
-       }
-        return $this->render('@DLAchat/Achat/allproducts.html.twig',array('products'=>$products,'imgs'=>$imgs));
+
+        return $this->render('@DLAchat/Achat/allproducts.html.twig',array('products'=>$products));
     }
 
     public function detailProductAction(Produit $produit)
     {
         $form = $this->createDeleteForm($produit);
 
+        $em = $this->getDoctrine()->getManager();
 
+        $idimg1 = $produit->getId();
+        $image1= $em->getRepository('DLAchatBundle:Produit')->findOneBy(array('image1'=>$idimg1));
 
-        $image1 =(stream_get_contents($produit->getImage1()));
-        $image2 =(stream_get_contents($produit->getImage2()));
-        $image3 =(stream_get_contents($produit->getImage3()));
+        $idimg2 = $produit->getId();
+        $image2= $em->getRepository('DLAchatBundle:Produit')->findOneBy(array('image1'=>$idimg2));
+
+        $idimg3 = $produit->getId();
+        $image3= $em->getRepository('DLAchatBundle:Produit')->findOneBy(array('image1'=>$idimg3));
+
 
         return $this->render('@DLAchat/Achat/detailProduct.html.twig', array(
             'image1'=>$image1,

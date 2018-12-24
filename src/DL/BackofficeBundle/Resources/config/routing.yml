@@ -25,9 +25,9 @@ erreurarbre:
     defaults: { _controller: DLBackofficeBundle:Main:erreurarbre }
 
 mespartenaires:
-    path:     /dashboard/mespartenairesG
+    path:     /dashboard/{id}/mespartenairesG
     defaults: { _controller: DLBackofficeBundle:MesPartenaires:afficherpartenairesG }
 
 mespartenaires2:
-    path:     /dashboard/mespartenairesD
+    path:     /dashboard/{id}/mespartenairesD
     defaults: { _controller: DLBackofficeBundle:MesPartenaires:afficherpartenairesD }

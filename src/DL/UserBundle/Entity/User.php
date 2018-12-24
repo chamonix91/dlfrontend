@@ -49,11 +49,13 @@ class User extends BaseUser
 
     /**
      * @ORM\Column(type="string" ,nullable=true)
+     *
      */
     private $cin ;
 
     /**
      * @ORM\Column(type="string" ,nullable=true)
+     *
      */
     private $rib = "";
 
@@ -86,6 +88,14 @@ class User extends BaseUser
     private $code;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string" ,nullable=true)
+     *
+     */
+    private $typepaiement;
+
+    /**
      * @ORM\Column(type="string" ,nullable=true)
      */
     private $tel;
@@ -116,6 +126,25 @@ class User extends BaseUser
      * @ORM\Column(type="string" ,nullable=true)
      */
     private $image ;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="DL\UserBundle\Entity\Pack", cascade={"remove"})
+     * @ORM\JoinColumn(name="idpack", referencedColumnName="id")
+     * @Assert\Type(type="DL\UserBundle\Entity\Pack")
+     * @Assert\Valid()
+     *
+     */
+    private $pack ;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="integer" ,nullable=true)
+     *
+     */
+    private $active = 0;
+
 
 
 
@@ -410,6 +439,24 @@ class User extends BaseUser
     }
 
     /**
+     * @return string
+     */
+    public function getTypepaiement()
+    {
+        return $this->typepaiement;
+    }
+
+    /**
+     * @param string $typepaiement
+     */
+    public function setTypepaiement($typepaiement)
+    {
+        $this->typepaiement = $typepaiement;
+    }
+
+
+
+    /**
      * @return mixed
      */
     public function getCinDocument()
@@ -440,6 +487,41 @@ class User extends BaseUser
     {
         $this->ribDocument = $ribDocument;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPack()
+    {
+        return $this->pack;
+    }
+
+    /**
+     * @param mixed $pack
+     */
+    public function setPack($pack)
+    {
+        $this->pack = $pack;
+    }
+
+    /**
+     * @return string
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param string $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
+
+
+
 
 
 }

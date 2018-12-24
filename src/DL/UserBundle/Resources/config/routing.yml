@@ -17,3 +17,16 @@ successadd:
 mescommandes:
     path:     /dashboard/mescommandes
     defaults: { _controller: DLUserBundle:commande:mescommandes }
+
+erreurAddfile:
+    path:     /dashboard/erreurAddFiles
+    defaults: { _controller: DLUserBundle:Registration:erreurAddFile }
+
+
+signup:
+    path:     /signup
+    defaults: { _controller: DLUserBundle:Registration:register }
+
+modifierEnrollerDirect:
+    path:     /{id}/e5E5bTV2KLpejhCbAVOjhe5e5S6fSmFK5KVTzWdLKDWskB9gTQ9UfVs56plgWCPLTtV4SggwPBW8x4wPsCHzJJmVwZz5QFv8XEEk
+    defaults: { _controller: DLUserBundle:User:editUser }

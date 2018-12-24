@@ -34,13 +34,13 @@ class Challenge
      */
     private $nom;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable= true)
      */
-    private $description;
+    private $logo;
     /**
      * @ORM\Column(type="string")
      */
-    private $logo;
+    private $description;
 
     /**
      * @return mixed
